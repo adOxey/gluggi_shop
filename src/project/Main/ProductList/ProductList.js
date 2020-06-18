@@ -1,13 +1,18 @@
 import React, { useContext } from "react";
-import classes from "./Products.module.css";
-import ProductCard from "./ProductCard/ProductCard";
-import { Spinner } from "../../../shared/components/";
+import classes from "./ProductList.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { Spinner, Card, Button } from "../../../shared/components";
 import { ProductsContext } from "../../../contexts/ProductsContext";
 
-const Products = () => {
-  const { quote, list } = classes;
+const ProductList = () => {
+  const { quote, list, iconStyle } = classes;
   const { products, addToCart, loading, removeProduct, searched } = useContext(
     ProductsContext
+  );
+
+  const checkedIcon = (
+    <FontAwesomeIcon icon={faCheckCircle} size="2x" className={iconStyle} />
   );
 
   const searchResults = (
@@ -17,17 +22,29 @@ const Products = () => {
       ) : (
         searched.map((product, index) => {
           return (
-            <ProductCard
+            <Card
               key={product.item.id}
               id={product.item.id}
               title={product.item.title}
               description={product.item.description}
               price={product.item.price}
               image={product.item.image}
-              addToCart={() => addToCart(index)}
-              removeProduct={() => removeProduct(product.id)}
-              disabled={product.item.disabled}
-            />
+              removeProduct={() => removeProduct(product.item.id)}
+            >
+              <Button
+                handleClick={() => addToCart(index)}
+                disabled={product.item.disabled}
+              >
+                {product.item.disabled ? (
+                  <>
+                    {checkedIcon}
+                    Item added
+                  </>
+                ) : (
+                  `ADD TO CART`
+                )}
+              </Button>
+            </Card>
           );
         })
       )}
@@ -41,17 +58,29 @@ const Products = () => {
       ) : (
         products.map((product, index) => {
           return (
-            <ProductCard
+            <Card
               key={product.id}
               id={product.id}
               title={product.title}
               description={product.description}
               price={product.price}
               image={product.image}
-              addToCart={() => addToCart(index)}
               removeProduct={() => removeProduct(product.id)}
-              disabled={product.disabled}
-            />
+            >
+              <Button
+                handleClick={() => addToCart(index)}
+                disabled={product.disabled}
+              >
+                {product.disabled ? (
+                  <>
+                    {checkedIcon}
+                    Item added
+                  </>
+                ) : (
+                  `ADD TO CART`
+                )}
+              </Button>
+            </Card>
           );
         })
       )}
@@ -69,4 +98,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductList;

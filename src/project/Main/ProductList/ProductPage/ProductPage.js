@@ -14,7 +14,7 @@ const ProductPage = () => {
 
   let { id } = useParams();
 
-  const iconn = (
+  const checkedIcon = (
     <FontAwesomeIcon icon={faCheckCircle} size="2x" className={iconStyle} />
   );
 
@@ -38,7 +38,7 @@ const ProductPage = () => {
               >
                 {product.disabled ? (
                   <>
-                    {iconn}
+                    {checkedIcon}
                     Item added
                   </>
                 ) : (

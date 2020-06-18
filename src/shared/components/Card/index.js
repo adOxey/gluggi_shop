@@ -1,20 +1,18 @@
 import React, { useContext } from "react";
 import classes from "./Card.module.css";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle, faInfo } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "../../../../shared/components/";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 
-const ProductCard = ({
+const Card = ({
   image,
   title,
   description,
-  addToCart,
-  disabled,
   price,
   id,
   removeProduct,
+  children,
 }) => {
   const {
     Container,
@@ -26,13 +24,9 @@ const ProductCard = ({
     Desc,
     Cost,
     BtnPosition,
-    IconStyle,
   } = classes;
-  const isLoggedIn = useContext(AuthContext);
 
-  const checkedIcon = (
-    <FontAwesomeIcon icon={faCheckCircle} size="2x" className={IconStyle} />
-  );
+  const isLoggedIn = useContext(AuthContext);
 
   return (
     <section className={Container}>
@@ -45,25 +39,19 @@ const ProductCard = ({
         </div>
       </div>
       <h2 className={Heading}>
-        {title}
+        <Link
+          to={`/product/${id}`}
+          style={{ textDecoration: "none", color: "#474747" }}
+        >
+          {title}
+        </Link>
         {isLoggedIn && <button onClick={removeProduct}>x</button>}
       </h2>
       <p className={Desc}>{description}</p>
-      <div className={BtnPosition}>
-        <Button handleClick={addToCart} disabled={disabled}>
-          {disabled ? (
-            <>
-              {checkedIcon}
-              Item added
-            </>
-          ) : (
-            `ADD TO CART`
-          )}
-        </Button>
-      </div>
+      <div className={BtnPosition}>{children}</div>
       <p className={Cost}>${price.toFixed(2)}</p>
     </section>
   );
 };
 
-export default ProductCard;
+export default Card;

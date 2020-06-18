@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ProductsProvider } from "../contexts/ProductsContext";
-import Products from "./Main/Products/Products";
+import ProductList from "./Main/ProductList/ProductList";
 import LandingPage from "./Main/LandingPage/LandingPage";
 import Navbar from "./Navbar/Navbar";
 import AddProductForm from "./Main/AddProductForm/AddProductForm";
 import SignIn from "./Main/SignIn/SignIn";
 import Cart from "./Main/Cart/Cart";
 import SignUp from "./Main/SignUp/SignUp";
-import ProductPage from "./Main/Products/ProductPage/ProductPage";
+import ProductPage from "./Main/ProductList/ProductPage/ProductPage";
 
 const App = () => {
   return (
@@ -36,7 +36,7 @@ const App = () => {
               <Cart />
             </Route>
             <Route path="/products">
-              <Products />
+              <ProductList />
             </Route>
           </Switch>
         </Router>

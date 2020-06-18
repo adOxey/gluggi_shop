@@ -123,7 +123,7 @@
   border-radius: 10px 10px 0 0;
 }
 
-.ImgContainer:hover .overlay {
+.ImgContainer:hover .Overlay {
   opacity: 1;
 }
 
@@ -139,7 +139,4 @@
 
 .Icon:hover {
   color: rgba(255, 254, 254, 0.8);
-}
-.IconStyle {
-  padding-right: 10px;
 }
