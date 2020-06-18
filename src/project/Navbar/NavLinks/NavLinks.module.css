@@ -1,0 +1,35 @@
+.Navigation {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  padding: 0px;
+}
+.Navigation li {
+  padding: 5px 0px 0px 40px;
+  list-style: none;
+  height: 100%;
+  width: 93px;
+}
+.Navigation li a {
+  align-self: center;
+  text-decoration: none;
+  color: #191919;
+  font-size: 1em;
+}
+.Navigation li:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+  .Navigation {
+    flex-direction: column;
+  }
+  .Navigation li {
+    padding: 5px 0 0 0;
+    text-transform: uppercase;
+    width: auto;
+  }
+  .Navigation li:hover {
+    border: 0px;
+    text-decoration: underline;
+  }
+}

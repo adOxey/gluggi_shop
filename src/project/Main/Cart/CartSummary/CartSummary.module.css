@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  justify-content: flex-end;
+  width: 1200px;
+  margin: auto;
+  padding: 10px;
+}
+.sum {
+  font-family: "Bentham", sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.button_cont {
+  margin-right: 20px;
+}
+
+.btnCheckout {
+  font-family: "Work Sans", "Open Sans", sans-serif;
+  border-radius: 4px;
+  background: #f7697b !important;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding: 10px;
+  width: 200px;
+  height: 50px;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin: 5px 15px 5px 5px;
+  outline: none;
+}
+.btnCheckout span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+}
+.btnCheckout span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.btnCheckout:hover span {
+  padding-right: 25px;
+}
+.btnCheckout:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.wrapper {
+  display: grid;
+}

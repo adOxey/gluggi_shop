@@ -1,0 +1,80 @@
+.wrapper {
+  height: 100vh;
+  font-family: "Roboto";
+}
+.container {
+  height: 80%;
+  background-image: url(../../../assets/imgs/landingpage2.jpg);
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.text_container {
+  box-sizing: border-box;
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  transform: translate(-30%, -35%);
+  color: white;
+}
+.text_container h1,
+p {
+  margin: 2px 0 0 0;
+}
+
+.text_container h1 {
+  max-width: 50%;
+  font-size: 62px;
+  line-height: 62px;
+  padding-bottom: 15px;
+  /* width: 50vw; */
+}
+.text_container p {
+  max-width: 50%;
+  font-size: 18px;
+}
+.text_container button {
+  font-family: "Roboto";
+  margin-top: 25px;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  border-radius: 15px;
+  height: 45px;
+  width: 130px;
+  outline: none;
+  cursor: pointer;
+}
+.text_container button:hover {
+  border: 2px solid #f7697b;
+  color: #f7697b;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 1409px) {
+  .text_container h1 {
+    max-width: 100%;
+  }
+  .text_container p {
+    max-width: 100%;
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .text_container {
+    top: 15%;
+    left: 20%;
+    transform: translate(-15%, -20%);
+  }
+  .text_container h1 {
+    max-width: 100%;
+    font-size: 35px;
+    line-height: 38px;
+  }
+  .text_container p {
+    max-width: 100%;
+    font-size: 16px;
+  }
+}

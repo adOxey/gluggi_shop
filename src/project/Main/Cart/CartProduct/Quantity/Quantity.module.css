@@ -1,0 +1,42 @@
+.qty {
+  font-family: "Raleway", sans-serif;
+  font-size: 1em;
+  position: absolute;
+  right: 150px;
+}
+.quantityStyle {
+  font-family: "Raleway", sans-serif;
+  width: 35px;
+  height: 20px;
+  outline: none;
+  border: none;
+  text-align: center;
+  font-size: 1em;
+  /* font-weight: bold; */
+}
+.addRemoveQty {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5em;
+  border-radius: 7px;
+  outline: none;
+  border: none;
+  height: 40px;
+  width: 40px;
+  text-decoration: none;
+  color: #fff;
+  background: #f7697b;
+  cursor: pointer;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.addRemoveQty:hover {
+  background: linear-gradient(
+    45deg,
+    rgb(247, 105, 123),
+    hsla(14, 100%, 53%, 0.6)
+  );
+}
+.addRemoveQty:active {
+  transform: scale(0.9);
+}

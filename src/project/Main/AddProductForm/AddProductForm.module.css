@@ -1,0 +1,142 @@
+.pageBody {
+  background-color: #faf7fa;
+  box-sizing: border-box;
+  margin: 10px 0 0 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 11.5px;
+  text-transform: uppercase;
+}
+
+.container {
+  background-color: #ffffff;
+  -webkit-box-shadow: 10px 10px 45px -18px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 10px 10px 45px -18px rgba(0, 0, 0, 0.45);
+  box-shadow: 10px 10px 45px -18px rgba(0, 0, 0, 0.45);
+  border-radius: 4px;
+  width: 40%;
+  margin: auto;
+  padding: 35px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.container h1 {
+  text-align: center;
+  font-weight: 700;
+  padding-bottom: 10px;
+  margin: 0 0 25px 0;
+  border-bottom: 1px solid rgb(209, 222, 250);
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  margin: 0;
+}
+.formWrapper div label {
+  display: block;
+  padding: 10px 0 7px 0;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.formWrapper div input,
+.formWrapper div textarea {
+  width: 100%;
+  border: 2px solid #e7e6e7;
+  outline: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 7px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.formWrapper div input:hover,
+.formWrapper div textarea:hover {
+  border: 2px solid #c4d7ff;
+}
+.formWrapper div input[type="text"] {
+  height: 40px;
+}
+
+.formWrapper div textarea[type="text"] {
+  height: 120px;
+  resize: vertical;
+}
+.formWrapper div input::-webkit-outer-spin-button,
+.formWrapper div input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.formWrapper div input[type="number"] {
+  height: 40px;
+  width: 95%;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.formWrapper section {
+  display: flex;
+  justify-content: space-evenly;
+}
+.formWrapper section div {
+  width: 50%;
+}
+
+.Errors {
+  height: 20px;
+  width: 90%;
+}
+.Errors p {
+  margin: 0;
+  color: red;
+}
+
+.Btn {
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  background-color: #f7697b;
+  color: whitesmoke;
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+}
+
+.Btn:hover {
+  transition-duration: 300ms;
+  background: #e25366;
+}
+
+.uploadBtn {
+  margin-top: 7px;
+  font-family: "Roboto", sans-serif;
+  font-size: 11.5px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100px;
+  height: 25px;
+  color: #f7697b;
+  background-color: rgb(224, 223, 223);
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+}
+.uploadBtn:hover {
+  background-color: #f7697b;
+  color: rgb(224, 223, 223);
+  transition-duration: 1s;
+}
+
+@media all and (max-width: 768px) {
+  .container {
+    width: 100vw;
+  }
+}

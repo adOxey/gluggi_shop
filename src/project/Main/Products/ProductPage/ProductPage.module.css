@@ -1,0 +1,44 @@
+.wrapper {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto auto auto;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 900px;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  border: 1px solid #e4e2e2;
+  padding: 60px;
+  border-radius: 15px;
+  -webkit-box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
+  -moz-box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
+  box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
+}
+
+.mainImg {
+  margin: auto;
+  max-height: 400px;
+  max-width: 400px;
+}
+.wrapper h2 {
+  margin: 20px 0 0 0;
+  font-size: 3rem;
+  color: #474747;
+}
+.wrapper h3 {
+  margin: 20px 0 0 0;
+  font-size: 1.5rem;
+  color: #474747;
+}
+
+.wrapper p {
+  font-size: 1em;
+  line-height: 1.3;
+  color: #474747;
+}
+.iconStyle {
+  padding-right: 10px;
+}

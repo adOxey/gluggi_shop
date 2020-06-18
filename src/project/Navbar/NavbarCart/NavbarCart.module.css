@@ -1,0 +1,23 @@
+.wrapper {
+  align-self: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.incart {
+  font-size: 13px;
+  font-family: "Work Sans", "Open Sans", sans-serif;
+  background: #f7697b;
+  color: #fff;
+  /* padding: 0 5px; */
+  /* vertical-align: top; */
+  margin-left: -10px;
+  padding-left: 5px;
+  padding-right: 6px;
+  margin-bottom: 16px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+.cart_icon {
+  color: black;
+}

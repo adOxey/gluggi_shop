@@ -1,0 +1,96 @@
+.cart_container {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  width: 350px;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  padding-left: 25px;
+}
+.heading {
+  display: block;
+  margin: auto;
+}
+.heading h1 {
+  margin-top: 0;
+  color: rgb(56, 56, 56);
+}
+.products {
+  border-top: 1px solid #afaeae;
+  border-bottom: 1px solid #afaeae;
+  width: 100%;
+  position: relative;
+}
+.products ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+.products ul li {
+  width: 100%;
+  padding-top: 8px;
+}
+.products ul li span {
+  font-weight: bold;
+  padding-right: 10px;
+}
+.products ul li p {
+  position: absolute;
+  right: 0;
+  display: inline;
+  margin: 0;
+}
+.totals {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.totals p {
+  margin: 10px 0 0 0;
+  position: relative;
+}
+.totals span {
+  text-align: right;
+  position: absolute;
+  right: 0;
+}
+.cart_container form {
+  padding-top: 20px;
+}
+.cart_container form input {
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #afaeae;
+  padding-left: 10px;
+}
+.backBtn {
+  margin-top: 25px;
+  outline: none;
+  text-align: center;
+  width: 150px;
+  height: 48px;
+  font-family: "Raleway", sans-serif;
+  background: #79bac1;
+  color: #ffffff;
+  font-size: 0.85em;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  transition: background 250ms ease-in-out, transform 300ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.backBtn:hover {
+  background: linear-gradient(45deg, #79bac1, #7acdd6);
+}
+
+.backBtn:active {
+  transform: scale(0.9);
+}
