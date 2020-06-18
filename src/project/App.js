@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ProductsProvider } from "../contexts/ProductsContext";
-import ProductList from "./Main/ProductList/ProductList";
+import ProductsPage from "./Main/ProductsPage/ProductsPage";
 import LandingPage from "./Main/LandingPage/LandingPage";
 import Navbar from "./Navbar/Navbar";
 import AddProductForm from "./Main/AddProductForm/AddProductForm";
@@ -36,7 +36,7 @@ const App = () => {
               <Cart />
             </Route>
             <Route path="/products">
-              <ProductList />
+              <ProductsPage />
             </Route>
           </Switch>
         </Router>
