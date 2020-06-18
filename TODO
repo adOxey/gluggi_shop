@@ -12,4 +12,6 @@ Big issues:
   ✔ Enable Firebase Storage and implement Image upload in Add Product form. @done(20-06-14 13:50)
   ☐ Rerender products state when new product is added.
   ✔ Implement fully functional Search component @done(20-06-12 16:15)
+  ☐ Search queries needs debounde function to be optimal.
+  
 

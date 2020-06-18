@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { Spinner, Card, Button } from "../../../shared/components";
 import { ProductsContext } from "../../../contexts/ProductsContext";
+import SearchedProductsList from "./SearchedProductsList/SearchedProductsList";
 
 const ProductList = () => {
   const { quote, list, iconStyle } = classes;
@@ -15,43 +16,7 @@ const ProductList = () => {
     <FontAwesomeIcon icon={faCheckCircle} size="2x" className={iconStyle} />
   );
 
-  const searchResults = (
-    <div className={list}>
-      {loading ? (
-        <Spinner />
-      ) : (
-        searched.map((product, index) => {
-          return (
-            <Card
-              key={product.item.id}
-              id={product.item.id}
-              title={product.item.title}
-              description={product.item.description}
-              price={product.item.price}
-              image={product.item.image}
-              removeProduct={() => removeProduct(product.item.id)}
-            >
-              <Button
-                handleClick={() => addToCart(index)}
-                disabled={product.item.disabled}
-              >
-                {product.item.disabled ? (
-                  <>
-                    {checkedIcon}
-                    Item added
-                  </>
-                ) : (
-                  `ADD TO CART`
-                )}
-              </Button>
-            </Card>
-          );
-        })
-      )}
-    </div>
-  );
-
-  const allProducts = (
+  const renderProducts = (
     <div className={list}>
       {loading ? (
         <Spinner />
@@ -93,7 +58,17 @@ const ProductList = () => {
         A Healthy Lifestyle Not Only Changes Your Body, It Changes Your Mind,
         Your Attitude And Your Mood
       </h2>
-      {searched.length <= 0 ? allProducts : searchResults}
+      {searched.length <= 0 ? (
+        renderProducts
+      ) : (
+        <SearchedProductsList
+          searched={searched}
+          removeProduct={removeProduct}
+          addToCart={addToCart}
+          checkedIcon={checkedIcon}
+          loading={loading}
+        />
+      )}
     </div>
   );
 };

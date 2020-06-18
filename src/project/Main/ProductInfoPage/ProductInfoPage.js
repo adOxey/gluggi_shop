@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { ProductsContext } from "../../../../contexts/ProductsContext";
+import { ProductsContext } from "../../../contexts/ProductsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import classes from "./ProductPage.module.css";
-import { Button } from "../../../../shared/components/";
+import classes from "./ProductInfoPage.module.css";
+import { Button } from "../../../shared/components";
 
-const ProductPage = () => {
+const ProductInfoPage = () => {
   const values = useContext(ProductsContext);
   const { products, addToCart } = values;
 
@@ -54,4 +54,4 @@ const ProductPage = () => {
   });
 };
 
-export default ProductPage;
+export default ProductInfoPage;

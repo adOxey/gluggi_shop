@@ -8,7 +8,7 @@ import AddProductForm from "./Main/AddProductForm/AddProductForm";
 import SignIn from "./Main/SignIn/SignIn";
 import Cart from "./Main/Cart/Cart";
 import SignUp from "./Main/SignUp/SignUp";
-import ProductPage from "./Main/ProductList/ProductPage/ProductPage";
+import ProductInfoPage from "./Main/ProductInfoPage/ProductInfoPage";
 
 const App = () => {
   return (
@@ -30,7 +30,7 @@ const App = () => {
               <AddProductForm />
             </Route>
             <Route path="/product/:id">
-              <ProductPage />
+              <ProductInfoPage />
             </Route>
             <Route path="/cart">
               <Cart />
