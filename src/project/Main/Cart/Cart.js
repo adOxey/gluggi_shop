@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { ProductsContext } from "../../../contexts/ProductsContext";
-import CartProduct from "./CartProduct/CartProduct";
+import CartProducts from "./CartProducts/CartProducts";
 import classes from "./Cart.module.css";
-import CartSummary from "./CartSummary/CartSummary";
+import Checkout from "./Checkout/Checkout";
 
 const Cart = () => {
   const values = useContext(ProductsContext);
@@ -28,7 +28,7 @@ const Cart = () => {
   return (
     <>
       {productsInCart.map((product, index) => (
-        <CartProduct
+        <CartProducts
           title={product.title}
           description={product.description}
           price={product.price}
@@ -41,7 +41,7 @@ const Cart = () => {
           quantity={product.quantity}
         />
       ))}
-      <CartSummary sumValue={sumOfProducts} productsInCart={productsInCart} />
+      <Checkout sumValue={sumOfProducts} productsInCart={productsInCart} />
     </>
   );
 };

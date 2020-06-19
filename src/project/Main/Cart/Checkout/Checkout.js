@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import classes from "./CartSummary.module.css";
+import classes from "./Checkout.module.css";
 import PaymentForm from "./PaymentForm/PaymentForm";
-import CheckoutSummary from "./CheckoutSummary/CheckoutSummary";
+import CartSummary from "./CartSummary/CartSummary";
 import { Modal } from "../../../../shared/components";
 
-const CartSummary = ({ sumValue, productsInCart }) => {
+const Checkout = ({ sumValue, productsInCart }) => {
   const { container, button_cont, btnCheckout, sum } = classes;
 
   const [show, setShow] = useState(false);
@@ -23,8 +23,8 @@ const CartSummary = ({ sumValue, productsInCart }) => {
       <p>
         Subtotal: <span className={sum}>${sumValue.toFixed(2)} </span>
       </p>
-      <Modal show={show}>
-        <CheckoutSummary
+      <Modal show={show} handleClose={showHideCheckoutModal}>
+        <CartSummary
           totalCost={sumValue}
           productsInCart={productsInCart}
           handleClose={showHideCheckoutModal}
@@ -35,4 +35,4 @@ const CartSummary = ({ sumValue, productsInCart }) => {
   );
 };
 
-export default CartSummary;
+export default Checkout;

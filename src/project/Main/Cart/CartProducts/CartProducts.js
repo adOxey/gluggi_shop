@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import classes from "./CartProduct.module.css";
+import classes from "./CartProducts.module.css";
 import Quantity from "./Quantity/Quantity";
 import { Button } from "../../../../shared/components";
 
-const CartProduct = ({
+const CartProducts = ({
   quantity,
   increaseQuantity,
   decreaseQuantity,
@@ -23,7 +23,6 @@ const CartProduct = ({
     desc,
     botContainer,
     detailsBtn,
-    removeBtn,
     priceStyle,
     total,
     quantity_price,
@@ -39,11 +38,11 @@ const CartProduct = ({
         <div className={botContainer}>
           <div>
             <Button handleClick={removeFromCart} variant="remove">
-              REMOVE
+              Remove
             </Button>
             <Link to={`/product/${id}`} className={detailsBtn}>
               <Button variant="info">
-                <span>PRODUCT DETAILS</span>
+                <span>More info</span>
               </Button>
             </Link>
           </div>
@@ -66,4 +65,4 @@ const CartProduct = ({
   );
 };
 
-export default CartProduct;
+export default CartProducts;

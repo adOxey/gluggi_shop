@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
   align-content: flex-start;
-  width: 350px;
+  width: 40%;
   height: 100%;
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
-  padding-left: 25px;
+  padding-left: 80px;
 }
 .heading {
   display: block;
@@ -14,7 +14,7 @@
 }
 .heading h1 {
   margin-top: 0;
-  color: rgb(56, 56, 56);
+  color: #424242;
 }
 .products {
   border-top: 1px solid #afaeae;
@@ -69,28 +69,4 @@
 }
 .backBtn {
   margin-top: 25px;
-  outline: none;
-  text-align: center;
-  width: 150px;
-  height: 48px;
-  font-family: "Raleway", sans-serif;
-  background: #79bac1;
-  color: #ffffff;
-  font-size: 0.85em;
-  letter-spacing: 0.12em;
-  cursor: pointer;
-  border-radius: 10px;
-  border: none;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  transition: background 250ms ease-in-out, transform 300ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.backBtn:hover {
-  background: linear-gradient(45deg, #79bac1, #7acdd6);
-}
-
-.backBtn:active {
-  transform: scale(0.9);
 }

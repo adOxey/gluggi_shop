@@ -3,11 +3,13 @@
   border: none;
   font-family: "Raleway", sans-serif;
   letter-spacing: 0.06em;
+  font-size: 0.85em;
   cursor: pointer;
   border-radius: 6px;
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.18);
 }
 .btn:active {
   transform: scale(0.9);
@@ -15,12 +17,10 @@
 
 .btnPrimary {
   margin: 0px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   width: 149px;
   height: 48px;
   background: #f7697b;
   color: #ffffff;
-  font-size: 0.85em;
   text-align: center;
 }
 
@@ -42,21 +42,17 @@
   height: 40px;
   background: #f7697b;
   color: #ffffff;
-  font-size: 0.75em;
 }
 .btnRemove:hover {
   background: #e25366;
 }
 
 .btnInfo {
-  position: absolute;
-  left: 120px;
   text-align: center;
   width: 100px;
   height: 40px;
   background: #79bac1;
   color: #ffffff;
-  font-size: 0.75em;
 }
 
 .btnInfo:hover {

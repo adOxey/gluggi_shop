@@ -1,7 +1,8 @@
 import React from "react";
-import classes from "./CheckoutSummary.module.css";
+import classes from "./CartSummary.module.css";
+import { Button } from "../../../../../shared/components";
 
-const CheckoutSummary = (props) => {
+const CartSummary = (props) => {
   const { totalCost, productsInCart, handleClose } = props;
   const { cart_container, products, heading, totals, backBtn } = classes;
 
@@ -35,11 +36,11 @@ const CheckoutSummary = (props) => {
       <form>
         <input type="text" placeholder="Have a discount code?" />
       </form>
-      <button onClick={handleClose} className={backBtn}>
-        Back To Cart
-      </button>
+      <div className={backBtn}>
+        <Button handleClick={handleClose}>Apply coupon</Button>
+      </div>
     </div>
   );
 };
 
-export default CheckoutSummary;
+export default CartSummary;

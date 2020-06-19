@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Button.module.css";
 
-const Button = ({ handleClick, disabled, variant, children }) => {
+const Button = ({ handleClick, disabled, variant, size, children }) => {
   const { btn, btnPrimary, btnRemove, btnInfo } = classes;
 
   const getVariant = (variant) => {
@@ -22,6 +22,7 @@ const Button = ({ handleClick, disabled, variant, children }) => {
       className={getVariant(variant)}
       onClick={handleClick}
       disabled={disabled}
+      style={size}
     >
       {children}
     </button>

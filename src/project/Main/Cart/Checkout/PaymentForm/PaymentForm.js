@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import classes from "./PaymentForm.module.css";
+import { Button } from "../../../../../shared/components";
 
 const PaymentForm = () => {
   const {
@@ -12,7 +13,7 @@ const PaymentForm = () => {
     Expiry,
     Cvc,
     btnPurchase,
-    btnReset
+    btnReset,
   } = classes;
 
   const initialState = { cvc: "", expiry: "", name: "", number: "" };
@@ -21,21 +22,21 @@ const PaymentForm = () => {
 
   const [focus, setFocus] = useState("");
 
-  const handleInputFocus = e => {
+  const handleInputFocus = (e) => {
     setFocus(e.target.name);
   };
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
 
     setFields({ ...fields, [name]: value });
   };
 
   const handlePayment = () => {
-    alert("Kupovina uspjesna!");
+    alert("Thank you for your purchase!");
   };
 
-  const handleReset = e => {
+  const handleReset = (e) => {
     e.preventDefault();
     setFields(initialState);
     document.paymentForm.reset();
@@ -87,12 +88,29 @@ const PaymentForm = () => {
           onFocus={handleInputFocus}
           className={Cvc}
         />
-        <button className={btnPurchase} onClick={handlePayment}>
+        <div className={btnPurchase}>
+          <Button
+            handleClick={handlePayment}
+            size={{ height: "45px", width: "130px" }}
+          >
+            Purchase
+          </Button>
+        </div>
+        <div className={btnReset}>
+          <Button
+            handleClick={handleReset}
+            variant="info"
+            size={{ height: "45px", width: "130px" }}
+          >
+            Reset
+          </Button>
+        </div>
+        {/* <button className={btnPurchase} onClick={handlePayment}>
           Purchase
         </button>
         <button className={btnReset} onClick={handleReset}>
           Reset
-        </button>
+        </button> */}
       </form>
     </div>
   );

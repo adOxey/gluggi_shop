@@ -1,8 +1,16 @@
 import React from "react";
 import classes from "./Modal.module.css";
 
-const Modal = ({ show, children }) => {
-  const { Modal, DisplayBlock, DisplayNone, ModalMain, Heading } = classes;
+const Modal = ({ show, handleClose, children }) => {
+  const {
+    Modal,
+    DisplayBlock,
+    DisplayNone,
+    ModalMain,
+    Title,
+    Content,
+    Header,
+  } = classes;
 
   const showHideClassName = show
     ? `${Modal} ${DisplayBlock}`
@@ -11,8 +19,12 @@ const Modal = ({ show, children }) => {
   return (
     <div className={showHideClassName}>
       <section className={ModalMain}>
-        <h1 className={Heading}>Checkout</h1>
-        <div>{children}</div>
+        <div className={Header}>
+          <h1 className={Title}>Checkout</h1>
+          <button onClick={handleClose}>&times;</button>
+        </div>
+
+        <div className={Content}>{children}</div>
       </section>
     </div>
   );

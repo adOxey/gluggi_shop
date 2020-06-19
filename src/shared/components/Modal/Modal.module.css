@@ -9,24 +9,48 @@
 .ModalMain {
   position: fixed;
   background: white;
-  /* width: auto;
-  height: auto; */
-  width: 80vw;
-  height: 80vh;
+  width: 60vw;
+  height: 70vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 4px;
+  border-radius: 5px;
 }
-.ModalMain div {
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(187, 186, 186);
+  border-radius: 5px 5px 0 0;
+  height: 85px;
+  margin-bottom: 25px;
+  padding-right: 10px;
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(248, 248, 248);
+}
+.Header button {
+  color: #424242;
+  font-size: 46px;
+  width: 5%;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(248, 248, 248);
+  border: none;
+  outline: none;
+}
+.Header button:hover {
+  color: #79bac1;
+}
+.Title {
+  color: #424242;
+  font-size: 1.8em;
+  text-align: center;
+  margin: 0;
+  width: 95%;
+}
+.Content {
   display: flex;
 }
-.Heading {
-  color: rgb(56, 56, 56);
-  font-size: 2em;
-  text-align: center;
-}
-
 .DisplayBlock {
   display: block;
 }
