@@ -1,40 +1,36 @@
 import React, { useState } from "react";
 import classes from "./CartSummary.module.css";
-import CheckoutModal from "./CheckoutModal/CheckoutModal";
 import PaymentForm from "./PaymentForm/PaymentForm";
 import CheckoutSummary from "./CheckoutSummary/CheckoutSummary";
+import { Modal } from "../../../../shared/components";
 
 const CartSummary = ({ sumValue, productsInCart }) => {
   const { container, button_cont, btnCheckout, sum } = classes;
 
   const [show, setShow] = useState(false);
 
-  const showCheckoutModal = () => {
-    setShow(true);
-  };
-
-  const hideCheckoutModal = () => {
-    setShow(false);
+  const showHideCheckoutModal = () => {
+    setShow(!show);
   };
 
   return (
     <div className={container}>
       <div className={button_cont}>
-        <button className={btnCheckout} onClick={showCheckoutModal}>
+        <button className={btnCheckout} onClick={showHideCheckoutModal}>
           <span>Checkout</span>
         </button>
       </div>
       <p>
         Subtotal: <span className={sum}>${sumValue.toFixed(2)} </span>
       </p>
-      <CheckoutModal show={show} handleClose={hideCheckoutModal}>
+      <Modal show={show}>
         <CheckoutSummary
           totalCost={sumValue}
           productsInCart={productsInCart}
-          handleClose={hideCheckoutModal}
+          handleClose={showHideCheckoutModal}
         />
         <PaymentForm />
-      </CheckoutModal>
+      </Modal>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const PaymentForm = () => {
     Expiry,
     Cvc,
     btnPurchase,
-    btnReset,
+    btnReset
   } = classes;
 
   const initialState = { cvc: "", expiry: "", name: "", number: "" };
@@ -21,11 +21,11 @@ const PaymentForm = () => {
 
   const [focus, setFocus] = useState("");
 
-  const handleInputFocus = (e) => {
+  const handleInputFocus = e => {
     setFocus(e.target.name);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
 
     setFields({ ...fields, [name]: value });
@@ -35,7 +35,7 @@ const PaymentForm = () => {
     alert("Kupovina uspjesna!");
   };
 
-  const handleReset = (e) => {
+  const handleReset = e => {
     e.preventDefault();
     setFields(initialState);
     document.paymentForm.reset();
@@ -49,7 +49,9 @@ const PaymentForm = () => {
         focused={focus}
         name={fields.name}
         number={fields.number}
+        placeholders={{ name: "Your name" }}
       />
+
       <form name="paymentForm" className={gridContainer}>
         <input
           type="tel"
@@ -71,7 +73,7 @@ const PaymentForm = () => {
           name="expiry"
           type="text"
           pattern="\d\d/\d\d"
-          placeholder="MM/YY"
+          placeholder="MMYY"
           onChange={handleInputChange}
           onFocus={handleInputFocus}
           className={Expiry}

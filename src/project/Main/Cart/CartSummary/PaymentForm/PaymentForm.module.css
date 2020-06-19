@@ -74,10 +74,7 @@
 .btnPurchase:active {
   transform: scale(0.9);
 }
-/* .btn:disabled {
-  background: #979696;
-  cursor: not-allowed;
-} */
+
 .btnReset {
   grid-area: Reset;
   outline: none;
