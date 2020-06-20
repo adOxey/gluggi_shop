@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./CartSummary.module.css";
 import { Button } from "../../../../../shared/components";
+import {
+  isValidCoupon,
+  priceWithCoupon,
+} from "../../../../../shared/utils/coupons";
 
 const CartSummary = (props) => {
-  const { totalCost, productsInCart, handleClose } = props;
+  const { totalCost, productsInCart } = props;
   const { cart_container, products, heading, totals, backBtn } = classes;
+
+  const [coupon, setCoupon] = useState("");
+  const [newPrice, setNewPrice] = useState(null);
+
+  const applyCoupon = (e) => {
+    e.preventDefault();
+    const isValid = isValidCoupon(coupon);
+    const applied = priceWithCoupon(isValid, totalCost);
+    setNewPrice(applied);
+  };
 
   return (
     <div className={cart_container}>
@@ -30,14 +44,33 @@ const CartSummary = (props) => {
         </p>
         <p>
           Total:
-          <span style={{ fontWeight: "bold" }}>{totalCost.toFixed(2)}$</span>
+          <span
+            style={
+              !newPrice
+                ? { fontWeight: "bold" }
+                : { textDecoration: "line-through" }
+            }
+          >
+            {totalCost.toFixed(2)}$
+          </span>
         </p>
+        {!newPrice ? null : (
+          <p style={{ color: "red" }}>
+            New total:
+            <span style={{ fontWeight: "bold" }}>{newPrice.toFixed(2)}$</span>
+          </p>
+        )}
       </div>
-      <form>
-        <input type="text" placeholder="Have a discount code?" />
+      <form onSubmit={applyCoupon}>
+        <input
+          type="text"
+          placeholder="Have a discount code?"
+          onChange={(e) => setCoupon(e.target.value)}
+          value={coupon}
+        />
       </form>
       <div className={backBtn}>
-        <Button handleClick={handleClose}>Apply coupon</Button>
+        <Button handleClick={applyCoupon}>Apply coupon</Button>
       </div>
     </div>
   );
