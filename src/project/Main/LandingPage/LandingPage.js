@@ -1,13 +1,14 @@
 import React from "react";
 import classes from "./LandingPage.module.css";
+import HeaderImage from './HeaderImage/HeaderImage'
 
 const LandinPage = () => {
-  const { container, text_container, wrapper } = classes;
+  const { wrapper } = classes;
 
   return (
     <div className={wrapper}>
-      <div className={container}>
-        {/* <img src={landingpage} alt="Landing page" className={lndImg} /> */}
+      <HeaderImage />
+      {/* <div className={container}>
         <div className={text_container}>
           <h1>
             Don’t let food allergies restrict you from enjoying amazing food.
@@ -19,7 +20,7 @@ const LandinPage = () => {
           </p>
           <button>SHOP</button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
