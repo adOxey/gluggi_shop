@@ -6,7 +6,7 @@ const Quantity = ({ quantity, increaseQuantity, decreaseQuantity }) => {
 
   return (
     <div className={qty}>
-      <span>Qty: </span>
+      <span>Quantity: </span>
       <button className={addRemoveQty} onClick={increaseQuantity}>
         +
       </button>

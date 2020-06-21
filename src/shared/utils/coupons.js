@@ -6,7 +6,7 @@ export const isValidCoupon = (coupon) => {
     }
 }
 
-export const priceWithCoupon = (isValidCoupon, cost) => {
+export const getPriceWithCoupon = (isValidCoupon, cost) => {
     if (isValidCoupon) {
         const deductedAmount = cost * isValidCoupon;
         return cost - deductedAmount;

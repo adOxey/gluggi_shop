@@ -3,7 +3,7 @@ import classes from "./CartSummary.module.css";
 import { Button } from "../../../../../shared/components";
 import {
   isValidCoupon,
-  priceWithCoupon,
+  getPriceWithCoupon,
 } from "../../../../../shared/utils/coupons";
 
 const CartSummary = (props) => {
@@ -16,8 +16,8 @@ const CartSummary = (props) => {
   const applyCoupon = (e) => {
     e.preventDefault();
     const isValid = isValidCoupon(coupon);
-    const applied = priceWithCoupon(isValid, totalCost);
-    setNewPrice(applied);
+    const priceWithCoupon = getPriceWithCoupon(isValid, totalCost);
+    setNewPrice(priceWithCoupon);
   };
 
   return (
@@ -40,7 +40,7 @@ const CartSummary = (props) => {
           Subtotal: <span>{totalCost.toFixed(2)}$</span>
         </p>
         <p>
-          Shipping: <span>00.00$</span> {/* For right now is hard coded! */}
+          Shipping: <span>00.00$</span> {/* Hard coded for now */}
         </p>
         <p>
           Total:

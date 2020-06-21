@@ -1,9 +1,8 @@
 .wrapper {
   display: flex;
-  width: 1200px;
+  width: 70vw;
   margin: 10px auto auto auto;
   padding: 15px;
-  /* border-bottom: 1px solid linen; */
   -webkit-box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
   -moz-box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
   box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
@@ -37,9 +36,11 @@
 .botContainer {
   margin-top: 10px;
   display: flex;
-  position: relative;
   justify-content: space-between;
   padding-left: 10px;
+}
+.BtnWrapper {
+  flex-basis: 60%;
 }
 
 .total {
@@ -53,30 +54,32 @@
   font-family: "Bentham", sans-serif;
   justify-self: flex-end;
   font-size: 1.5em;
-  /* font-weight: 600; */
   margin: 0 0 0 10px;
 }
 
-@media only screen and (max-width: 1259px) {
+@media only screen and (max-width: 768px) {
   .wrapper {
     flex-direction: column;
-    max-width: 90vw;
+    width: 85vw;
   }
+  .BtnWrapper {
+    flex-basis: 50%;
+  }
+  
   .imageStyle {
     margin: auto;
   }
 }
 @media only screen and (max-width: 590px) {
   .botContainer {
-    display: grid;
-    grid-template-areas: "btns btns btns btns", "rest rest rest rest";
+    flex-wrap: wrap-reverse;
   }
+  .BtnWrapper {
+    flex-basis: 100%;
+  }
+  
   .botContainer div {
-    grid-area: "btns";
-  }
-  .quantity_price {
-    grid-area: "rest";
-    width: 100vw;
+    padding-top: 10px;
   }
   .titleStyle {
     font-size: 18px;

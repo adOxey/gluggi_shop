@@ -1,4 +1,4 @@
-.wrapper {
+.Wrapper {
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -18,27 +18,27 @@
   box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
 }
 
-.mainImg {
+.MainImg {
   margin: auto;
   max-height: 400px;
   max-width: 400px;
 }
-.wrapper h2 {
+.Wrapper h2 {
   margin: 20px 0 0 0;
   font-size: 3rem;
   color: #474747;
 }
-.wrapper h3 {
+.Wrapper h3 {
   margin: 20px 0 0 0;
   font-size: 1.5rem;
   color: #474747;
 }
 
-.wrapper p {
+.Wrapper p {
   font-size: 1em;
   line-height: 1.3;
   color: #474747;
 }
-.iconStyle {
+.IconStyle {
   padding-right: 10px;
 }

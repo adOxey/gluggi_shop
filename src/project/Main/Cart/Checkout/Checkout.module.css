@@ -1,7 +1,7 @@
 .container {
   display: flex;
   justify-content: flex-end;
-  width: 1200px;
+  width: 70vw;
   margin: auto;
   padding: 10px;
 }
@@ -56,4 +56,17 @@
 
 .wrapper {
   display: grid;
+}
+@media only screen and (max-width: 590px) {
+  .container {
+    justify-content: center;
+    width: 85vw;
+    margin-top: 15px;
+  }
+  .sum {
+    font-size: 1.5em;
+  }
+  .btnCheckout {
+    width: 140px;
+  }
 }

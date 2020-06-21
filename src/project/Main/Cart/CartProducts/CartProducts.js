@@ -25,8 +25,7 @@ const CartProducts = ({
     detailsBtn,
     priceStyle,
     total,
-    quantity_price,
-    quantity_style,
+    BtnWrapper,
   } = classes;
 
   return (
@@ -36,7 +35,7 @@ const CartProducts = ({
         <h2 className={titleStyle}>{title}</h2>
         <p className={desc}>{description}</p>
         <div className={botContainer}>
-          <div>
+          <div className={BtnWrapper}>
             <Button handleClick={removeFromCart} variant="remove">
               Remove
             </Button>
@@ -46,18 +45,16 @@ const CartProducts = ({
               </Button>
             </Link>
           </div>
-          <div className={quantity_price}>
-            <div className={quantity_style}>
-              <Quantity
-                quantity={quantity}
-                increaseQuantity={increaseQuantity}
-                decreaseQuantity={decreaseQuantity}
-              />
-            </div>
-            <p className={priceStyle}>
-              <span className={total}>Total: </span>$
-              {(price * quantity).toFixed(2)}
-            </p>
+          <div>
+            <Quantity
+              quantity={quantity}
+              increaseQuantity={increaseQuantity}
+              decreaseQuantity={decreaseQuantity}
+            />
+          </div>
+          <div className={priceStyle}>
+            <span className={total}>Total: </span>$
+            {(price * quantity).toFixed(2)}
           </div>
         </div>
       </div>
