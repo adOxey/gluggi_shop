@@ -1,75 +1,125 @@
 .container {
-    height: 80%;
-    background-image: url(../../../../assets/imgs/landingpage2.jpg);
-    /* Position and center the image to scale nicely on all screens */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
+  height: 75%;
+  width: 100vw;
+  background-image: url(../../../../assets/imgs/landingpage2.jpg);
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.text_container {
+  box-sizing: border-box;
+  color: white;
+  padding-top: 120px;
+  padding-left: 200px;
+}
+.text_container h1,
+p {
+  margin: 2px 0 0 0;
+}
+
+.text_container h1 {
+  font-size: 82px;
+  line-height: 86px;
+  padding-bottom: 20px;
+}
+.text_container h1 span {
+  color: #f7697b;
+}
+.text_container p {
+  width: 53%;
+  font-size: 18px;
+}
+.text_container button {
+  font-family: "Roboto";
+  font-size: 18px;
+  margin-top: 25px;
+  border: 2px solid #79bac1;
+  background-color: transparent;
+  color: #79bac1;
+  border-radius: 15px;
+  height: 50px;
+  width: 155px;
+  outline: none;
+  cursor: pointer;
+}
+.text_container button:hover {
+  border: 2px solid #f7697b;
+  color: #f7697b;
+}
+
+@media only screen and (max-width: 960px) {
   .text_container {
-    box-sizing: border-box;
-    position: absolute;
-    top: 35%;
-    left: 30%;
-    transform: translate(-30%, -35%);
-    color: white;
+    /* padding-top: 100px; */
+    padding-left: 150px;
   }
-  .text_container h1,
-  p {
-    margin: 2px 0 0 0;
-  }
-  
   .text_container h1 {
-    width: 50%;
-    font-size: 42px;
-    line-height: 62px;
-    padding-bottom: 15px;
+    font-size: 76px;
+    line-height: 76px;
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .text_container {
+    /* padding-top: 100px; */
+    padding-left: 80px;
+  }
+  .text_container h1 {
+    font-size: 72px;
+    line-height: 72px;
+    padding-bottom: 20px;
   }
   .text_container p {
-    width: 53%;
-    font-size: 18px;
+    font-size: 16px;
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 663px) {
+  .text_container {
+    padding-top: 100px;
+    padding-left: 80px;
+  }
+  .text_container h1 {
+    font-size: 52px;
+    line-height: 52px;
+    padding-bottom: 20px;
+  }
+  .text_container p {
+    font-size: 16px;
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .text_container {
+    padding-top: 60px;
+    padding-left: 60px;
+  }
+  .text_container h1 {
+    font-size: 40px;
+    line-height: 40px;
+    padding-bottom: 20px;
+  }
+  .text_container p {
+    font-size: 16px;
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .text_container {
+    padding-top: 60px;
+    padding-left: 60px;
+  }
+  .text_container h1 {
+    font-size: 28px;
+    line-height: 28px;
+    padding-bottom: 20px;
+  }
+  .text_container p {
+    font-size: 14px;
+    width: 80%;
   }
   .text_container button {
-    font-family: "Roboto";
-    font-size: 18px;
-    margin-top: 25px;
-    border: 2px solid white;
-    background-color: transparent;
-    color: white;
-    border-radius: 15px;
-    height: 50px;
-    width: 155px;
-    outline: none;
-    cursor: pointer;
+    height: 40px;
+    width: 120px;
   }
-  .text_container button:hover {
-    border: 2px solid #f7697b;
-    color: #f7697b;
-  }
-  
-  @media only screen and (max-width: 1409px) {
-    .text_container h1 {
-      width: 53%;
-    }
-    .text_container p {
-      width: 53%;
-      font-size: 16px;
-    }
-  }
-  @media only screen and (max-width: 415px) {
-    .text_container {
-      top: 20%;
-      left: 20%;
-      transform: translate(-15%, -20%);
-    }
-    .text_container h1 {
-      width: 100%;
-      font-size: 35px;
-      line-height: 38px;
-    }
-    .text_container p {
-      width: 100%;
-      font-size: 16px;
-    }
 }
