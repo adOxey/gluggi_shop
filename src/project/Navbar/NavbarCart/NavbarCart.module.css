@@ -5,7 +5,7 @@
 }
 .incart {
   font-size: 13px;
-  font-family: "Work Sans", "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   background: #f7697b;
   color: #fff;
   /* padding: 0 5px; */
@@ -19,5 +19,5 @@
   border-radius: 9px;
 }
 .cart_icon {
-  color: black;
+  color: rgb(54, 54, 54);
 }

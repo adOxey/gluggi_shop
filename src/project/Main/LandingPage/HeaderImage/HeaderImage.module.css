@@ -9,7 +9,7 @@
 }
 .text_container {
   box-sizing: border-box;
-  color: white;
+  color: rgb(54, 54, 54);
   padding-top: 120px;
   padding-left: 200px;
 }
@@ -28,7 +28,7 @@ p {
 }
 .text_container p {
   width: 53%;
-  font-size: 18px;
+  font-size: 20px;
 }
 .text_container button {
   font-family: "Roboto";
@@ -49,6 +49,9 @@ p {
 }
 
 @media only screen and (max-width: 960px) {
+  .container {
+    background-size: 960px;
+  }
   .text_container {
     /* padding-top: 100px; */
     padding-left: 150px;
@@ -121,5 +124,8 @@ p {
   .text_container button {
     height: 40px;
     width: 120px;
+  }
+  .container {
+    background-size: cover;
   }
 }

@@ -1,10 +1,11 @@
 .Navigation {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
   display: flex;
   padding: 0px;
 }
 .Navigation li {
-  padding: 5px 0px 0px 40px;
+  padding: 10px 0px 0px 30px;
   list-style: none;
   height: 100%;
   width: 93px;
@@ -12,11 +13,11 @@
 .Navigation li a {
   align-self: center;
   text-decoration: none;
-  color: #191919;
+  color: rgb(54, 54, 54);
   font-size: 1em;
 }
-.Navigation li:hover {
-  text-decoration: underline;
+.Navigation li a:hover {
+  color: #79bac1;
 }
 
 @media only screen and (max-width: 768px) {
@@ -30,6 +31,6 @@
   }
   .Navigation li:hover {
     border: 0px;
-    text-decoration: underline;
+    color: #79bac1;
   }
 }

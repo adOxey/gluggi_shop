@@ -1,4 +1,5 @@
 .Navbar {
+  font-family: "Roboto", sans-serif;
   display: flex;
   border-bottom: 1px solid #e5e5e5;
   height: 69px;
@@ -14,6 +15,7 @@
   font-weight: bold;
   align-self: center;
   padding-left: 10px;
+  color: rgb(54, 54, 54);
 }
 
 @media only screen and (max-width: 768px) {

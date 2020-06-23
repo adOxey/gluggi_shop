@@ -9,20 +9,18 @@
   margin-top: 12px;
   height: 40px;
   width: 25vw;
-  border: 1px solid hsla(14, 100%, 53%, 0.6);
+  border: 2px solid;
+  border-image-source: linear-gradient(45deg, #79bac1, #f7697b);
+  border-image-slice: 1;
   outline: none;
-  color: hsla(14, 100%, 53%, 0.6);
-  font-family: "Work Sans", "Open Sans", sans-serif;
+  color: #f7697b;
+  font-family: "Roboto", sans-serif;
   font-size: 1em;
   padding-left: 10px;
 }
 .search_bar input:focus {
   border: 2px solid;
-  border-image-source: linear-gradient(
-    45deg,
-    hsla(14, 100%, 53%, 0.6),
-    rgb(250, 224, 66)
-  );
+  border-image-source: linear-gradient(45deg, #f7697b, #79bac1);
   border-image-slice: 1;
 }
 
