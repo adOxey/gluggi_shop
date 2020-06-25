@@ -3,7 +3,7 @@ import classes from "./FeaturedReviews.module.css";
 import { ReviewBox } from "../../../../shared/components";
 
 function FeaturedReviews() {
-  const { Container } = classes;
+  const { Container, TitleWrapper, ReviewsWrapper } = classes;
   const initialState = [
     {
       title: "As good as advertised",
@@ -34,11 +34,17 @@ function FeaturedReviews() {
 
   return (
     <div className={Container}>
-      <h1>
-        What Our Customers <br />
-        <span>ARE SAYING</span>
-      </h1>
-      <div>
+      <div className={TitleWrapper}>
+        <h1>
+          What <span style={{ color: "#F7697B" }}>Our</span> Customers
+        </h1>
+        <h1>
+          <span style={{ fontWeight: "bold" }}>
+            ARE <span style={{ color: "#79BAC1" }}>SAYING</span>
+          </span>
+        </h1>
+      </div>
+      <div className={ReviewsWrapper}>
         {reviews.map((review) => (
           <ReviewBox
             key={review.id}

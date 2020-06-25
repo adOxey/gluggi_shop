@@ -1,7 +1,10 @@
 .Wrapper {
-  width: 30vw;
+  width: 23%;
+  min-width: 200px;
+  height: auto;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -36,4 +39,10 @@
 .Infos {
   display: flex;
   flex-direction: column;
+}
+@media only screen and (max-width: 600px) {
+  .Wrapper {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
