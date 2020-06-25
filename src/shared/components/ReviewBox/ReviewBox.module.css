@@ -1,0 +1,39 @@
+.Wrapper {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.Wrapper div {
+  font-size: 38px;
+  align-self: flex-start;
+  color: #f7697b;
+}
+.Wrapper h2,
+.Wrapper p {
+  margin: 0;
+}
+.Wrapper h2 {
+  font-size: 28px;
+}
+.Description {
+  font-size: 20px;
+  color: #c4c4c4;
+  font-style: italic;
+  padding: 10px 0 10px 0;
+}
+.Author {
+  font-size: 18px;
+  color: #79bac1;
+  font-weight: bold;
+}
+.NewDate {
+  font-size: 16px;
+  color: #5f5f5f;
+  font-weight: bold;
+}
+.Infos {
+  display: flex;
+  flex-direction: column;
+}

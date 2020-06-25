@@ -1,17 +1,19 @@
 import React from "react";
 import classes from "./LandingPage.module.css";
 import HeaderImage from "./HeaderImage/HeaderImage";
-import MiddleSection from "./MiddleSection/MiddleSection";
+import Benefits from "./Benefits/Benefits";
+import FeaturedReviews from "./FeaturedReviews/FeaturedReviews";
 
-const LandinPage = () => {
+const LandingPage = () => {
   const { wrapper } = classes;
 
   return (
     <div className={wrapper}>
       <HeaderImage />
-      <MiddleSection />
+      <Benefits />
+      <FeaturedReviews />
     </div>
   );
 };
 
-export default LandinPage;
+export default LandingPage;
