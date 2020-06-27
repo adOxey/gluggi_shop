@@ -11,7 +11,7 @@ export const ProductsProvider = (props) => {
   const [loading, setLoading] = useState(true);
   const [searched, setSearched] = useState([]);
 
-  const { removeFromFirestore, changedProducts } = useFirestore(
+  const { removeFromFirestore } = useFirestore(
     PRODUCTS
   );
 
@@ -49,7 +49,7 @@ export const ProductsProvider = (props) => {
     };
 
     fetchData();
-  }, [changedProducts]);
+  }, []);
 
   // Search products
   const handleSearch = (searchedValue) => {

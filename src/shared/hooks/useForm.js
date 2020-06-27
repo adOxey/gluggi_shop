@@ -1,25 +1,14 @@
 import React, { useState } from "react";
-import { formReducer } from "../../reducers/addProductReducer";
-import { PRODUCTS } from "../../firebase/firebase";
-import useFirestore from "./useFirestore";
 
-const useForm = (initialState, validation) => {
-  // Initial state needs to be object
-  // Validation needs to return errors object - errors.something = ""
-  const [values, dispatch] = React.useReducer(formReducer, initialState);
+const useForm = (
+  initialState,
+  validation,
+  addToFirestore,
+  handleFirebaseUpload,
+  reducer
+) => {
+  const [values, dispatch] = React.useReducer(reducer, initialState);
   const [success, setSuccess] = useState({ submitted: false, message: "" });
-  const { addToFirestore, handleFirebaseUpload } = useFirestore(
-    PRODUCTS
-  );
-
-  const handleBlur = (e) => {
-    const checkForErrors = validation(values);
-    dispatch({
-      type: "VALIDATE",
-      payload: checkForErrors,
-      name: e.target.name,
-    });
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,8 +19,17 @@ const useForm = (initialState, validation) => {
     });
   };
 
-  const handleUrl = (imgUrl) => {
-    console.log("handleURL", imgUrl);
+  const handleBlur = (e) => {
+    const checkForErrors = validation(values);
+    dispatch({
+      type: "VALIDATE",
+      payload: checkForErrors,
+      name: e.target.name,
+    });
+  };
+
+  const getImageUrl = (imgUrl) => {
+    console.log("getImageUrl", imgUrl);
     dispatch({ type: "RETURNED_IMG_URL", payload: imgUrl });
   };
 
@@ -42,8 +40,9 @@ const useForm = (initialState, validation) => {
 
   const handleUploadImage = async (e) => {
     e.preventDefault();
-    handleFirebaseUpload(values, handleUrl);
+    handleFirebaseUpload(values, getImageUrl);
   };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const err = validation(values);

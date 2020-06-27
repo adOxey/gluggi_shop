@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  REVIEWS,
-  gluggiFirestore,
-} from "../../../../firebase/firebase";
+import { REVIEWS, gluggiFirestore } from "../../../../firebase/firebase";
 import classes from "./FeaturedReviews.module.css";
 import { ReviewBox } from "../../../../shared/components";
 import { showCorrectTimestamp } from "../../../../shared/utils/compareTimestamps";
@@ -17,7 +14,9 @@ function FeaturedReviews() {
       .onSnapshot((snapshot) => {
         if (snapshot.size) {
           let myReviews = [];
-          snapshot.forEach((doc) => myReviews.push({ ...doc.data() }));
+          snapshot.forEach((doc) =>
+            myReviews.push({ id: doc.id, ...doc.data() })
+          );
           setReviews(myReviews);
         } else {
           console.log("Collection empty or something went wrong");
@@ -42,14 +41,14 @@ function FeaturedReviews() {
       </div>
       <div className={ReviewsWrapper}>
         {reviews.map((review) => {
-          const { id, rating, title, description, reviewer, date } = review;
+          const { id, grade, title, description, author, date } = review;
           return (
             <ReviewBox
               key={id}
-              rating={rating}
+              rating={grade}
               title={title}
               description={description}
-              author={reviewer}
+              author={author}
               date={showCorrectTimestamp(date.toMillis())}
             />
           );

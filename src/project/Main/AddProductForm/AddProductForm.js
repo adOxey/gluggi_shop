@@ -3,9 +3,14 @@ import classes from "./AddProductForm.module.css";
 import useForm from "../../../shared/hooks/useForm";
 import validation from "./validation";
 import ErrorRenderer from "./ErrorRederer";
+import { PRODUCTS } from "../../../firebase/firebase";
+import useFirestore from "../../../shared/hooks/useFirestore";
+import { formReducer } from "../.././../reducers/addProductReducer";
 
 const AddProductForm = () => {
   const { container, formWrapper, Btn, Errors, pageBody, uploadBtn } = classes;
+
+  const { addToFirestore, handleFirebaseUpload } = useFirestore(PRODUCTS);
 
   const initialState = {
     productName: "",
@@ -37,7 +42,13 @@ const AddProductForm = () => {
     handleImageAsFile,
     success,
     handleUploadImage,
-  } = useForm(initialState, validation);
+  } = useForm(
+    initialState,
+    validation,
+    addToFirestore,
+    handleFirebaseUpload,
+    formReducer
+  );
 
   const styleBorder = (err, touched) => {
     if (err && touched) {

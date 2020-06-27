@@ -1,9 +1,7 @@
 import { gluggiFirestore, gluggiStorage } from "../../firebase/firebase";
-import { useState } from "react";
 import { v1 as uuidv1 } from "uuid";
 
 const useFirestore = (collection) => {
-  const [changedProducts, setChangedProducts] = useState(false);
 
   // Remove item from Firestore
   const removeFromFirestore = (id) => {
@@ -16,12 +14,10 @@ const useFirestore = (collection) => {
         querySnapshot.forEach((doc) => doc.ref.delete());
       })
       .catch((err) => console.log(err));
-    setChangedProducts(!changedProducts);
   };
 
   // Add item to Firestore
   const addToFirestore = (values) => {
-    console.log("addToFirebase", values);
     const collectionRef = gluggiFirestore.collection(`${collection}`);
 
     collectionRef
@@ -43,11 +39,10 @@ const useFirestore = (collection) => {
       .catch((error) => {
         console.error("Error writing document: ", error);
       });
-    setChangedProducts(!changedProducts);
   };
 
   // Add image to Firebase Storage
-  const handleFirebaseUpload = (values, handleUrl) => {
+  const handleFirebaseUpload = (values, getImageUrl) => {
     console.log("handleFirebaseUpload", values);
     console.log("start of upload");
     // async magic goes here...
@@ -72,13 +67,13 @@ const useFirestore = (collection) => {
       },
       () => {
         // gets the functions from storage refences the image storage in firebase by the children
-        // gets the download url then pass the image from firebase as the argument to the handleUrl function:
+        // gets the download url then pass the image from firebase as the argument to the getImageUrl function:
         gluggiStorage
           .ref("images")
           .child(values.imageAsFile.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {
-            handleUrl(fireBaseUrl);
+            getImageUrl(fireBaseUrl);
           });
       }
     );
@@ -87,7 +82,6 @@ const useFirestore = (collection) => {
   return {
     removeFromFirestore,
     addToFirestore,
-    changedProducts,
     handleFirebaseUpload,
   };
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import benefitsImg from "../../../../assets/imgs/benefits.jpg";
 import classes from "./Benefits.module.css";
 
 function MiddleSection() {
