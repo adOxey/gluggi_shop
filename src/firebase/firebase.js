@@ -10,7 +10,7 @@ const config = {
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 // Initialize Firebase
@@ -18,7 +18,8 @@ const config = {
 const gluggiProject = firebase.initializeApp(config);
 
 // Collections
-export const productsCollection = "products";
+export const PRODUCTS = "products";
+export const REVIEWS = "reviews";
 
 // Accessable firebase services via exports
 // It's important that firebase is initialized only once

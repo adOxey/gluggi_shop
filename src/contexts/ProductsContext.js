@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import useFirestore from "../shared/hooks/useFirestore";
-import { gluggiFirestore, productsCollection } from "../firebase/firebase";
+import { gluggiFirestore, PRODUCTS } from "../firebase/firebase";
 
 export const ProductsContext = createContext();
 
@@ -12,7 +12,7 @@ export const ProductsProvider = (props) => {
   const [searched, setSearched] = useState([]);
 
   const { removeFromFirestore, changedProducts } = useFirestore(
-    productsCollection
+    PRODUCTS
   );
 
   // Compare products from Firestore and Local Storage on mount.
@@ -24,7 +24,7 @@ export const ProductsProvider = (props) => {
       );
 
       const getCollection = await gluggiFirestore
-        .collection(`${productsCollection}`)
+        .collection(PRODUCTS)
         .get();
 
       let getData = getCollection.docs.map((doc) => ({

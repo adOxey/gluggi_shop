@@ -1,37 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {
+  REVIEWS,
+  gluggiFirestore,
+} from "../../../../firebase/firebase";
 import classes from "./FeaturedReviews.module.css";
 import { ReviewBox } from "../../../../shared/components";
+import { showCorrectTimestamp } from "../../../../shared/utils/compareTimestamps";
 
 function FeaturedReviews() {
   const { Container, TitleWrapper, ReviewsWrapper } = classes;
-  const initialState = [
-    {
-      title: "As good as advertised",
-      description: "Amazing food. At a right price.",
-      rating: 4,
-      reviewer: "Oreo Fluffinghton",
-      date: "32 Hours Ago",
-      id: 21212,
-    },
-    {
-      title: "Excellent service and good quality",
-      description: "Products arrived on time and were exactly as described.",
-      rating: 5,
-      reviewer: "Mrs. Lisa Decamp",
-      date: "125 Hours Ago",
-      id: 85481,
-    },
-    {
-      title: "Not good. Not bad.",
-      description: "Could be better in some aspects. Overall solid products.",
-      rating: 3,
-      reviewer: "Josh Bocour",
-      date: "12 Hours Ago",
-      id: 1444548,
-    },
-  ];
-  const [reviews, setReviews] = useState(initialState);
+  const [reviews, setReviews] = useState([]);
 
+  useEffect(() => {
+    const unsubscribe = gluggiFirestore
+      .collection(REVIEWS)
+      .onSnapshot((snapshot) => {
+        if (snapshot.size) {
+          let myReviews = [];
+          snapshot.forEach((doc) => myReviews.push({ ...doc.data() }));
+          setReviews(myReviews);
+        } else {
+          console.log("Collection empty or something went wrong");
+        }
+      });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   return (
     <div className={Container}>
       <div className={TitleWrapper}>
@@ -45,16 +41,19 @@ function FeaturedReviews() {
         </h1>
       </div>
       <div className={ReviewsWrapper}>
-        {reviews.map((review) => (
-          <ReviewBox
-            key={review.id}
-            rating={review.rating}
-            title={review.title}
-            description={review.description}
-            author={review.reviewer}
-            date={review.date}
-          />
-        ))}
+        {reviews.map((review) => {
+          const { id, rating, title, description, reviewer, date } = review;
+          return (
+            <ReviewBox
+              key={id}
+              rating={rating}
+              title={title}
+              description={description}
+              author={reviewer}
+              date={showCorrectTimestamp(date.toMillis())}
+            />
+          );
+        })}
       </div>
     </div>
   );

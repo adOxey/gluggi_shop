@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { formReducer } from "../../reducers/addProductReducer";
-import { productsCollection } from "../../firebase/firebase";
+import { PRODUCTS } from "../../firebase/firebase";
 import useFirestore from "./useFirestore";
 
 const useForm = (initialState, validation) => {
@@ -9,7 +9,7 @@ const useForm = (initialState, validation) => {
   const [values, dispatch] = React.useReducer(formReducer, initialState);
   const [success, setSuccess] = useState({ submitted: false, message: "" });
   const { addToFirestore, handleFirebaseUpload } = useFirestore(
-    productsCollection
+    PRODUCTS
   );
 
   const handleBlur = (e) => {
