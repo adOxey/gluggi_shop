@@ -12,6 +12,7 @@
     "@welldone-software/why-did-you-render": "^4.0.4",
     "firebase": "^7.8.2",
     "fuse.js": "^6.0.4",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-credit-cards": "^0.8.0",
     "react-dom": "^16.12.0",

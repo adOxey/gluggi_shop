@@ -9,6 +9,7 @@ import SignIn from "./Main/SignIn/SignIn";
 import Cart from "./Main/Cart/Cart";
 import SignUp from "./Main/SignUp/SignUp";
 import ProductInfoPage from "./Main/ProductInfoPage/ProductInfoPage";
+import ReviewForm from "./Main/ReviewForm/ReviewForm";
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
             </Route>
             <Route path="/addproduct">
               <AddProductForm />
+            </Route>
+            <Route path="/review-us">
+              <ReviewForm />
             </Route>
             <Route path="/product/:id">
               <ProductInfoPage />

@@ -1,0 +1,47 @@
+.Input {
+  width: 100%;
+  border: 2px solid #e7e6e7;
+  outline: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 7px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+.Input:hover {
+  border: 2px solid #c4d7ff;
+}
+.Input[type="text"] {
+  height: 40px;
+}
+.Input::-webkit-outer-spin-button,
+.formWrapper div input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.Input[type="number"] {
+  height: 40px;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.uploadBtn {
+  margin-top: 7px;
+  font-family: "Roboto", sans-serif;
+  font-size: 11.5px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100px;
+  height: 25px;
+  color: #f7697b;
+  background-color: rgb(224, 223, 223);
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+}
+.uploadBtn:hover {
+  background-color: #f7697b;
+  color: rgb(224, 223, 223);
+  transition-duration: 1s;
+}

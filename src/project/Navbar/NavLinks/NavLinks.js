@@ -32,6 +32,9 @@ const NavLinks = () => {
             <Link to="/addproduct">Add Product</Link>
           </li>
           <li>
+            <Link to="/review-us">Review</Link>
+          </li>
+          <li>
             <a href="/" onClick={handleSignOut}>
               Sign out
             </a>

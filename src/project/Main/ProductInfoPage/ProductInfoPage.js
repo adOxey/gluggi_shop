@@ -31,7 +31,7 @@ const ProductInfoPage = () => {
             <p>{product.ingredients}</p>
             <h3>Allergy Advice</h3>
             <p>{product.alergy_advice}</p>
-            <div style={{marginTop: "20px"}}>
+            <div style={{ marginTop: "20px" }}>
               <Button
                 handleClick={() => addToCart(index)}
                 disabled={product.disabled}
