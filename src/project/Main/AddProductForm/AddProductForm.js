@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./AddProductForm.module.css";
 import useForm from "../../../shared/hooks/useForm";
 import validation from "./validation";
 import { PRODUCTS } from "../../../firebase/firebase";
 import useFirestore from "../../../shared/hooks/useFirestore";
-import { formReducer } from "../.././../reducers/addProductReducer";
+import { formReducer } from "../.././../reducers/formReducer";
 import { Button, Form, FormInput } from "../../../shared/components";
 
 const AddProductForm = () => {
@@ -32,6 +32,7 @@ const AddProductForm = () => {
       productImage: false,
       imageAsUrl: false,
     },
+    completed: false,
   };
 
   const {
@@ -45,10 +46,16 @@ const AddProductForm = () => {
   } = useForm(
     initialState,
     validation,
-    addToFirestore,
-    handleFirebaseUpload,
-    formReducer
+    formReducer,
+    handleFirebaseUpload
   );
+
+  useEffect(() => {
+    if (values.completed) {
+      addToFirestore(values);
+    }
+    console.log("UseEffect rerendered");
+  }, [values.completed]);
 
   return (
     <div className={pageBody}>

@@ -3,9 +3,8 @@ import React, { useState } from "react";
 const useForm = (
   initialState,
   validation,
-  addToFirestore,
-  handleFirebaseUpload,
-  reducer
+  reducer,
+  handleFirebaseUpload
 ) => {
   const [values, dispatch] = React.useReducer(reducer, initialState);
   const [success, setSuccess] = useState({ submitted: false, message: "" });
@@ -42,14 +41,14 @@ const useForm = (
     e.preventDefault();
     handleFirebaseUpload(values, getImageUrl);
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const err = validation(values);
     const noErrors = Object.keys(err).length === 0;
 
     if (noErrors) {
-      addToFirestore(values);
+      dispatch({ type: "COMPLETE_FORM" });
       setSuccess({
         ...success,
         submitted: true,

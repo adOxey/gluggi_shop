@@ -25,17 +25,23 @@ export const formReducer = (state, action) => {
         imageAsUrl: action.payload,
       };
     case "ONSUBMIT_VALIDATE":
+      const keys = Object.keys(state.isTouched)
+        .map((key) => {
+          return key;
+        })
+        .reduce((o, key) => ({ ...o, [key]: true }), {});
       return {
         ...state,
         isTouched: {
-          productName: true,
-          shortDets: true,
-          fullDesc: true,
-          stock: true,
-          price: true,
-          imageAsUrl: true,
+          ...state.isTouched,
+          ...keys,
         },
         errors: { ...action.payload },
+      };
+    case "COMPLETE_FORM":
+      return {
+        ...state,
+        completed: true,
       };
     default:
       return state;
