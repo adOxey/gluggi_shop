@@ -30,21 +30,25 @@ const SignUp = (props) => {
   );
 
   useEffect(() => {
-    const handleSignup = async () => {
-      if (values.completed) {
-        await gluggiAuth
-          .createUserWithEmailAndPassword(values.email, values.password)
-          .then((res) => {
-            res.user.updateProfile({ displayName: values.username });
-            history.push("/");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    };
-    handleSignup();
+    if (values.completed) {
+      handleSignup();
+    }
   }, [values.completed]);
+
+  const handleSignup = async () => {
+    if (values.completed) {
+      await gluggiAuth
+        .createUserWithEmailAndPassword(values.email, values.password)
+        .then((res) => {
+          res.user.updateProfile({ displayName: values.username });
+          history.push("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    console.log("Rerenderujem Signup");
+  };
 
   return (
     <div className={classes.container}>

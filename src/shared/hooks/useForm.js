@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 
-const useForm = (
-  initialState,
-  validation,
-  reducer,
-  handleFirebaseUpload
-) => {
+const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
   const [values, dispatch] = React.useReducer(reducer, initialState);
   const [success, setSuccess] = useState({ submitted: false, message: "" });
 
@@ -21,7 +16,7 @@ const useForm = (
   const handleBlur = (e) => {
     const checkForErrors = validation(values);
     dispatch({
-      type: "VALIDATE",
+      type: "VALIDATE_ONBLUR",
       payload: checkForErrors,
       name: e.target.name,
     });
@@ -29,12 +24,12 @@ const useForm = (
 
   const getImageUrl = (imgUrl) => {
     console.log("getImageUrl", imgUrl);
-    dispatch({ type: "RETURNED_IMG_URL", payload: imgUrl });
+    dispatch({ type: "RETURN_IMG_URL", payload: imgUrl });
   };
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
-    dispatch({ type: "HANDLE_CHANGE_IMAGE", payload: image });
+    dispatch({ type: "HANDLE_IMAGE_AS_FILE", payload: image });
   };
 
   const handleUploadImage = async (e) => {
@@ -48,15 +43,18 @@ const useForm = (
     const noErrors = Object.keys(err).length === 0;
 
     if (noErrors) {
-      dispatch({ type: "COMPLETE_FORM" });
+      dispatch({ type: "SUBMIT_FORM" });
       setSuccess({
         ...success,
         submitted: true,
         message: "Submited Successfully",
       });
+      setTimeout(() => {
+        dispatch({ type: "RESET_FORM", payload: initialState });
+      }, 1500);
       window.scrollTo(0, 0);
     } else {
-      dispatch({ type: "ONSUBMIT_VALIDATE", payload: err });
+      dispatch({ type: "VALIDATE_ONSUBMIT", payload: err });
       setSuccess({
         ...success,
         submitted: false,

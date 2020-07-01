@@ -44,8 +44,7 @@ const FormInput = ({
 FormInput.defaultProps = {
   type: "text",
   className: classes.Input,
-  locked: false,
-  focussed: false,
+  isTouched: false,
 };
 
 FormInput.propTypes = {
