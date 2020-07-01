@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   font-family: "Roboto", sans-serif;
-  width: 60%;
-  height: 100%;
+  width: 50%;
+  height: auto;
 }
 
 .gridContainer {
@@ -18,7 +18,7 @@
     "Name Name Name Name"
     "Expiry Expiry Ccv Ccv"
     "Purchase Purchase Reset Reset";
-  width: 55%;
+  width: 90%;
   margin-top: 20px;
 }
 .gridContainer input {
@@ -56,4 +56,16 @@
 .btnReset {
   grid-area: Reset;
   margin: 0 auto;
+}
+
+@media (max-width: 767.98px) {
+  .container {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid lightgray;
+    width: 100%;
+  }
+  .gridContainer {
+    width: 90%;
+  }
 }

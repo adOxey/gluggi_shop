@@ -3,3 +3,14 @@
   margin: 0 auto;
   padding-top: 100px;
 }
+.rating {
+  margin: 0 auto;
+}
+.ratings ul {
+  margin: 0;
+  padding: 10px 0 30px 20px;
+  display: flex;
+  list-style: none;
+  font-size: 68px;  
+  color: #f7697b;
+}

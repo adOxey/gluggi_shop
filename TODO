@@ -3,7 +3,7 @@ Big issues:
   While im waiting to check if user is logged in navigation is rendered as if user is not logged in for a brief moment. 
   When i receive async response from Firestore with information that user is logged in, only then navigation is correcty rendered with protected routes.
   Posible solutions (check async nature of the API call or if needed prepare spinner or sceleton UI)
-  ☐ Local Storage doesnt remember quantity.
+  ☐ Local Storage doesn`t remember quantity.
   When user change quantity of product in cart and then refresh page, product is still there but quantity is reseted to 1.
   ✔ Implement "Delete" function for products. @done(20-06-09 19:36)
   ☐ Implement "Edit" function for products.

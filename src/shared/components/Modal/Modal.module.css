@@ -24,14 +24,13 @@
   border-radius: 5px 5px 0 0;
   height: 85px;
   margin-bottom: 25px;
-  padding-right: 10px;
   font-family: "Roboto", sans-serif;
   background-color: rgb(248, 248, 248);
 }
 .Header button {
   color: #424242;
   font-size: 46px;
-  width: 5%;
+  width: 10%;
   text-align: center;
   cursor: pointer;
   background-color: rgb(248, 248, 248);
@@ -50,6 +49,7 @@
 }
 .Content {
   display: flex;
+  justify-content: center;
 }
 .DisplayBlock {
   display: block;
@@ -57,4 +57,33 @@
 
 .DisplayNone {
   display: none;
+}
+
+@media (max-width: 575.98px) {
+  /* .Content {
+   flex-direction: column;
+  } */
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .Content {
+    flex-direction: column;
+  }
+  .ModalMain {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+  }
+  .Header button {
+    font-size: 36px;
+    width: 20%;
+  }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .ModalMain {
+    width: 80vw;
+    height: auto;
+  }
 }

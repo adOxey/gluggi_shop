@@ -29,10 +29,10 @@ const NavLinks = () => {
       {isLoggedIn && (
         <>
           <li>
-            <Link to="/addproduct">Add Product</Link>
+            <Link to="/addproduct">Add product</Link>
           </li>
           <li>
-            <Link to="/review-us">Review</Link>
+            <Link to="/rate-us">Rate us</Link>
           </li>
           <li>
             <a href="/" onClick={handleSignOut}>
