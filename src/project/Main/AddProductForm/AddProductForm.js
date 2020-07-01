@@ -43,12 +43,7 @@ const AddProductForm = () => {
     handleImageAsFile,
     success,
     handleUploadImage,
-  } = useForm(
-    initialState,
-    validation,
-    formReducer,
-    handleFirebaseUpload
-  );
+  } = useForm(initialState, validation, formReducer, handleFirebaseUpload);
 
   useEffect(() => {
     if (values.completed) {
@@ -144,7 +139,7 @@ const AddProductForm = () => {
             isTouched={values.isTouched.price}
           />
           <FormInput
-            label="Upload product file:"
+            label="Upload product image:"
             type="file"
             name="imageAsUrl"
             onBlur={handleBlur}

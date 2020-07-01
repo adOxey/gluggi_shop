@@ -5,7 +5,7 @@ export const formReducer = (state, action) => {
         ...state,
         [action.name]: action.value,
       };
-    case "VALIDATE":
+    case "VALIDATE_ONBLUR":
       return {
         ...state,
         errors: action.payload,
@@ -14,17 +14,17 @@ export const formReducer = (state, action) => {
           [action.name]: true,
         },
       };
-    case "HANDLE_CHANGE_IMAGE":
+    case "HANDLE_IMAGE_AS_FILE":
       return {
         ...state,
         imageAsFile: action.payload,
       };
-    case "RETURNED_IMG_URL":
+    case "RETURN_IMG_URL":
       return {
         ...state,
         imageAsUrl: action.payload,
       };
-    case "ONSUBMIT_VALIDATE":
+    case "VALIDATE_ONSUBMIT":
       const keys = Object.keys(state.isTouched)
         .map((key) => {
           return key;
@@ -38,11 +38,13 @@ export const formReducer = (state, action) => {
         },
         errors: { ...action.payload },
       };
-    case "COMPLETE_FORM":
+    case "SUBMIT_FORM":
       return {
         ...state,
         completed: true,
       };
+    case "RESET_FORM":
+      return action.payload;
     default:
       return state;
   }
