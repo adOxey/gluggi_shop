@@ -3,34 +3,57 @@ import { Button, Form, FormInput } from "../../../shared/components";
 import classes from "./ReviewForm.module.css";
 
 function ReviewForm() {
+  const notVoted = <span>&#9734;</span>;
+  const voted = <span>&#9733;</span>;
+
   const initialState = [
-    { star: "one", clicked: false, id: 1 },
-    { star: "two", clicked: false, id: 2 },
-    { star: "three", clicked: false, id: 3 },
-    { star: "four", clicked: false, id: 4 },
-    { star: "five", clicked: false, id: 5 },
+    { rating: 1, isVoted: notVoted.props.children },
+    { rating: 2, isVoted: notVoted.props.children },
+    { rating: 3, isVoted: notVoted.props.children },
+    { rating: 4, isVoted: notVoted.props.children },
+    { rating: 5, isVoted: notVoted.props.children },
   ];
   const [ratings, setRatings] = useState(initialState);
 
-  const handleClick = () => {};
+  const handleClick = (index) => {
+    const ratingsCopy = [...ratings];
+    let item = ratingsCopy[index];
+
+    if (item.isVoted === voted) {
+      return { ...item, isVoted: notVoted };
+    } else if (item.isVoted === notVoted) {
+      return { ...item, isVoted: voted };
+    }
+
+    const newRatings = ratingsCopy.map((star) => {
+      if (item.rating >= star.rating) {
+        return { ...star, isVoted: voted };
+      }
+      if (item.rating <= star.rating) {
+        return { ...star, isVoted: notVoted };
+      }
+      return star;
+    });
+    console.log("newRatings", newRatings);
+    setRatings([...newRatings]);
+  };
 
   return (
     <div className={classes.wrapper}>
       <h1>Say something about our products...</h1>
       <div className={classes.ratings}>
         <h3>Rate us:</h3>
-        <ul>
-          {ratings.map((star) => (
-            <li key={star.id} onClick={(star, id) => handleClick(star.id)}>
-              &#9734;
-            </li>
+        <div>
+          {ratings.map((star, index) => (
+            <button
+              key={star.rating}
+              className={classes.rateBtn}
+              onClick={() => handleClick(index)}
+            >
+              {star.isVoted}
+            </button>
           ))}
-          {/* <li onMouseOver={}>&#9734;</li>
-          <li onMouseOver={}>&#9734;</li>
-          <li onMouseOver={}>&#9734;</li>
-          <li onMouseOver={}>&#9734;</li>
-          <li onMouseOver={}>&#9734;</li> */}
-        </ul>
+        </div>
       </div>
       <Form>
         <FormInput label="Title:" />

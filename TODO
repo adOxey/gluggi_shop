@@ -1,10 +1,10 @@
 Big issues:
   ✔ Fix problem with refreshing page and rerendering navigation bar. @done(20-06-11 22:59)
-  While im waiting to check if user is logged in navigation is rendered as if user is not logged in for a brief moment. 
-  When i receive async response from Firestore with information that user is logged in, only then navigation is correcty rendered with protected routes.
-  Posible solutions (check async nature of the API call or if needed prepare spinner or sceleton UI)
+      While im waiting to check if user is logged in navigation is rendered as if user is not logged in for a brief moment. 
+      When i receive async response from Firestore with information that user is logged in, only then navigation is correcty rendered with protected routes.
+      Posible solutions (check async nature of the API call or if needed prepare spinner or sceleton UI)
   ☐ Local Storage doesn`t remember quantity.
-  When user change quantity of product in cart and then refresh page, product is still there but quantity is reseted to 1.
+      When user change quantity of product in cart and then refresh page, product is still there but quantity is reseted to 1.
   ✔ Implement "Delete" function for products. @done(20-06-09 19:36)
   ☐ Implement "Edit" function for products.
   ✔ Enable Firebase Storage and implement Image upload in Add Product form. @done(20-06-14 13:50)
@@ -13,4 +13,7 @@ Big issues:
   ☐ Search queries needs debounde function to be optimal. Now is clunky.
   ☐ Implement fully functional Reviews 
   ☐ Need to do integration od Stripe package to Checkout component.
-
+  ☐ Split users and admins via Firebase Admin SDK and grant them diferent set of rights.
+      I will probably need to use Firebase functions or some kinda of server for Firebase Admin SDK. 
+      I should never be in the front end part of app.
+  ☐ Make Modal UI component responsive on mobile devices.

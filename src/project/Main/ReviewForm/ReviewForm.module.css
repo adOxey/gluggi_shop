@@ -3,14 +3,22 @@
   margin: 0 auto;
   padding-top: 100px;
 }
-.rating {
-  margin: 0 auto;
+.ratings div {
+  margin-bottom: 15px;
 }
-.ratings ul {
-  margin: 0;
-  padding: 10px 0 30px 20px;
-  display: flex;
-  list-style: none;
-  font-size: 68px;  
+
+.rateBtn {
+  height: auto;
+  width: auto;
+  border: none;
+  outline: none;
+  font-size: 68px;
   color: #f7697b;
+  padding: 0 auto;
+  margin: 0 auto;
+  background-color: #fafafa;
+}
+
+.rateBtn:active {
+  color: #33a1ad;
 }
