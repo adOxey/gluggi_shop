@@ -9,7 +9,7 @@ import SignIn from "./Main/SignIn/SignIn";
 import Cart from "./Main/Cart/Cart";
 import SignUp from "./Main/SignUp/SignUp";
 import ProductInfoPage from "./Main/ProductInfoPage/ProductInfoPage";
-import ReviewForm from "./Main/ReviewForm/ReviewForm";
+import ReviewPage from "./Main/ReviewPage/ReviewPage";
 
 const App = () => {
   return (
@@ -31,7 +31,7 @@ const App = () => {
               <AddProductForm />
             </Route>
             <Route path="/rate-us">
-              <ReviewForm />
+              <ReviewPage />
             </Route>
             <Route path="/product/:id">
               <ProductInfoPage />

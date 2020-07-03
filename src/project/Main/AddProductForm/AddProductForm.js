@@ -50,6 +50,7 @@ const AddProductForm = () => {
       addToFirestore(values);
     }
     console.log("UseEffect rerendered");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.completed]);
 
   return (

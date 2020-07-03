@@ -1,10 +1,9 @@
-.wrapper {
-  width: 500px;
-  margin: 0 auto;
-  padding-top: 100px;
+.ratings {
+  margin-bottom: 25px;
 }
-.ratings div {
-  margin-bottom: 15px;
+
+.ratings h3 {
+  margin: 0;
 }
 
 .rateBtn {
@@ -14,11 +13,13 @@
   outline: none;
   font-size: 68px;
   color: #f7697b;
-  padding: 0 auto;
+  padding: 0;
   margin: 0 auto;
   background-color: #fafafa;
 }
 
 .rateBtn:active {
+  transition-duration: 300ms;
   color: #33a1ad;
+  outline: none;
 }

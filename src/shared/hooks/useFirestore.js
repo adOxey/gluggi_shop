@@ -2,7 +2,6 @@ import { gluggiFirestore, gluggiStorage } from "../../firebase/firebase";
 import { v1 as uuidv1 } from "uuid";
 
 const useFirestore = (collection) => {
-
   // Remove item from Firestore
   const removeFromFirestore = (id) => {
     const collectionRef = gluggiFirestore.collection(`${collection}`);
@@ -20,25 +19,42 @@ const useFirestore = (collection) => {
   const addToFirestore = (values) => {
     const collectionRef = gluggiFirestore.collection(`${collection}`);
 
-    collectionRef
-      .add({
-        title: values.productName.trim(),
-        description: values.shortDets.trim(),
-        details: values.fullDesc.trim(),
-        ingredients: values.ingredients.trim(),
-        price: Number(values.price),
-        quantity: 1,
-        alergy_advice: values.alergyAdvice.trim(),
-        disabled: false,
-        id: uuidv1(),
-        image: values.imageAsUrl,
-      })
-      .then(() => {
-        console.log("Document successfully written!");
-      })
-      .catch((error) => {
-        console.error("Error writing document: ", error);
-      });
+    collection === "products" &&
+      collectionRef
+        .add({
+          title: values.productName.trim(),
+          description: values.shortDets.trim(),
+          details: values.fullDesc.trim(),
+          ingredients: values.ingredients.trim(),
+          price: Number(values.price),
+          quantity: 1,
+          alergy_advice: values.alergyAdvice.trim(),
+          disabled: false,
+          id: uuidv1(),
+          image: values.imageAsUrl,
+        })
+        .then(() => {
+          console.log("Document successfully written!");
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+
+    collection === "reviews" &&
+      collectionRef
+        .add({
+          title: values.values.shortReview.trim(),
+          description: values.values.fullReview.trim(),
+          grade: values.grade,
+          author: values.author.trim(),
+          date: new Date(),
+        })
+        .then(() => {
+          console.log("Review successfully added");
+        })
+        .catch((error) => {
+          console.error("Error adding review: ", error);
+        });
   };
 
   // Add image to Firebase Storage

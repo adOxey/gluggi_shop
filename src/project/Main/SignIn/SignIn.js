@@ -32,22 +32,23 @@ const SignIn = () => {
 
   useEffect(() => {
     if (values.completed) {
+      const handleSignIn = async () => {
+        await gluggiAuth
+          .signInWithEmailAndPassword(values.email, values.password)
+          .then((res) => {
+            history.push("/products");
+            return res;
+          })
+          .catch((err) => {
+            console.log("Err msg:", err);
+            setAuthErrors((prevState) => err);
+          });
+      };
       handleSignIn();
     }
-  }, [values.completed]);
 
-  const handleSignIn = async () => {
-    await gluggiAuth
-      .signInWithEmailAndPassword(values.email, values.password)
-      .then((res) => {
-        history.push("/products");
-        return res;
-      })
-      .catch((err) => {
-        console.log("Err msg:", err);
-        setAuthErrors((prevState) => err);
-      });
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values.completed]);
 
   return (
     <div className={classes.wrapper}>

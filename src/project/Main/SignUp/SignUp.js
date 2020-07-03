@@ -33,6 +33,7 @@ const SignUp = (props) => {
     if (values.completed) {
       handleSignup();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.completed]);
 
   const handleSignup = async () => {

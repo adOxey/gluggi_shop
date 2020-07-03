@@ -1,0 +1,9 @@
+.wrapper {
+  width: 500px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+.wrapper h1 {
+  margin: 0 0 60px 0;
+}
+
