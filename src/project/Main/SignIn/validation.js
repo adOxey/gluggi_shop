@@ -26,6 +26,9 @@ export const firebaseAuthErrors = (authErrors) => {
   } else if (authErrors.code === "auth/invalid-email") {
     errorMessage =
       "Email address is invalid. Note that email field is case-sensitive.";
+  } else if (authErrors.code === "auth/too-many-requests") {
+    errorMessage =
+      "Too many unsuccessful login attempts. Please try again later.";
   }
 
   return errorMessage;

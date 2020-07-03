@@ -41,7 +41,7 @@ const SignIn = () => {
           })
           .catch((err) => {
             console.log("Err msg:", err);
-            setAuthErrors((prevState) => err);
+            setAuthErrors(err);
           });
       };
       handleSignIn();
@@ -54,7 +54,7 @@ const SignIn = () => {
     <div className={classes.wrapper}>
       <div className={classes.container}>
         <h2 className={classes.heading}>Sign in</h2>
-        <Form onClick={handleSubmit}>
+        <Form onClick={handleSubmit} autoComplete="on">
           <FormInput
             label="Email:"
             type="text"

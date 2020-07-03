@@ -27,6 +27,7 @@ function FeaturedReviews() {
       unsubscribe();
     };
   }, []);
+
   return (
     <div className={Container}>
       <div className={TitleWrapper}>

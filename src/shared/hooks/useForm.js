@@ -1,8 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
   const [values, dispatch] = React.useReducer(reducer, initialState);
   const [success, setSuccess] = useState({ submitted: false, message: "" });
+
+  useEffect(() => {
+    let mounted = true;
+
+    if (values.completed) {
+      setTimeout(() => {
+        if (mounted) {
+          dispatch({ type: "RESET_FORM", payload: initialState });
+        }
+      }, 1000);
+    }
+
+    return () => (mounted = false);
+  }, [values.completed, initialState]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,11 +61,8 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
       setSuccess({
         ...success,
         submitted: true,
-        message: "Submited Successfully",
+        message: "Submitted Successfully",
       });
-      setTimeout(() => {
-        dispatch({ type: "RESET_FORM", payload: initialState });
-      }, 1500);
       window.scrollTo(0, 0);
     } else {
       dispatch({ type: "VALIDATE_ONSUBMIT", payload: err });
