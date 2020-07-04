@@ -1,9 +1,40 @@
-.wrapper {
-  width: 500px;
+.Wrapper {
+  max-width: 600px;
+
   margin: 0 auto;
   padding-top: 100px;
+  padding-bottom: 30px;
 }
-.wrapper h1 {
+
+.Wrapper div {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.Wrapper h1 {
+  width: 100%;
   margin: 0 0 60px 0;
 }
 
+.Error {
+  width: 100%;
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.Success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 45px;
+  margin: 0 auto 50px auto;
+  border-radius: 10px;
+  border: 1px solid rgb(204, 204, 204);
+  color: rgb(53, 204, 53);
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  background-color: white;
+}

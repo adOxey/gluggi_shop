@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
   const [values, dispatch] = React.useReducer(reducer, initialState);
-  const [success, setSuccess] = useState({ submitted: false, message: "" });
+  const [status, setStatus] = useState({ isSubmited: false, message: "" });
 
   useEffect(() => {
     let mounted = true;
@@ -58,18 +58,18 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
 
     if (noErrors) {
       dispatch({ type: "SUBMIT_FORM" });
-      setSuccess({
-        ...success,
-        submitted: true,
+      setStatus({
+        ...status,
+        isSubmited: true,
         message: "Submitted Successfully",
       });
       window.scrollTo(0, 0);
     } else {
       dispatch({ type: "VALIDATE_ONSUBMIT", payload: err });
-      setSuccess({
-        ...success,
-        submitted: false,
-        message: "Error ! All mandatory fields have to be filled.",
+      setStatus({
+        ...status,
+        isSubmited: false,
+        message: "Error ! All mandatory fields must be filled.",
       });
       window.scrollTo(0, 0);
     }
@@ -80,7 +80,7 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
     handleChange,
     handleSubmit,
     handleBlur,
-    success,
+    status,
     handleImageAsFile,
     handleUploadImage,
   };

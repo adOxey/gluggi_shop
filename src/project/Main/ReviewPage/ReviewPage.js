@@ -14,6 +14,10 @@ import {
 import StarRating from "./StarRating/StarRating";
 
 function ReviewForm() {
+  const [grade, setGrade] = useState(0);
+  const [author, setAuthor] = useState("");
+  const [status, setStatus] = useState({ isSubmitted: false, message: "" });
+
   useEffect(() => {
     gluggiAuth.onAuthStateChanged((user) => {
       if (user) {
@@ -32,8 +36,6 @@ function ReviewForm() {
     },
     completed: false,
   };
-  const [grade, setGrade] = useState(0);
-  const [author, setAuthor] = useState("");
 
   const { values, handleChange, handleSubmit, handleBlur } = useForm(
     initialFormState,
@@ -44,8 +46,16 @@ function ReviewForm() {
   const { addToFirestore } = useFirestore(REVIEWS);
 
   useEffect(() => {
-    if (values.completed && grade !== 0) {
-      addToFirestore({ values, grade, author });
+    if (values.completed) {
+      if (grade !== 0) {
+        addToFirestore({ values, grade, author });
+        setStatus({ isSubmitted: true, message: "Submitted Successfully" });
+      } else {
+        setStatus({
+          isSubmitted: false,
+          message: "You need to rate us to submit review",
+        });
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.completed, grade]);
@@ -58,32 +68,40 @@ function ReviewForm() {
   };
 
   return (
-    <div className={classes.wrapper}>
-      <h1>Say something about our products...</h1>
-      <StarRating saveRating={saveRating} />
-      <Form onSubmit={handleSubmit}>
-        <FormInput
-          label="Describe our service in one short sentence:"
-          name="shortReview"
-          type="text"
-          value={values.shortReview}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={values.errors.shortReview}
-          isTouched={values.isTouched.shortReview}
-        />
-        <FormTextarea
-          label="Provide more details:"
-          type="text"
-          name="fullReview"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.fullReview}
-          error={values.errors.fullReview}
-          isTouched={values.isTouched.fullReview}
-        />
-        <Button handleClick={handleSubmit}>Send Review</Button>
-      </Form>
+    <div className={classes.Wrapper}>
+      <div>
+        {status.isSubmitted ? (
+          <p className={classes.Success}>{status.message}</p>
+        ) : (
+          <h1>Say something about our products...</h1>
+        )}
+
+        <StarRating saveRating={saveRating} />
+        <p className={classes.Error}>{!status.isSubmitted && status.message}</p>
+        <Form onSubmit={handleSubmit}>
+          <FormInput
+            label="Describe our service in one short sentence:"
+            name="shortReview"
+            type="text"
+            value={values.shortReview}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={values.errors.shortReview}
+            isTouched={values.isTouched.shortReview}
+          />
+          <FormTextarea
+            label="Provide more details:"
+            type="text"
+            name="fullReview"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.fullReview}
+            error={values.errors.fullReview}
+            isTouched={values.isTouched.fullReview}
+          />
+          <Button handleClick={handleSubmit}>Send Review</Button>
+        </Form>
+      </div>
     </div>
   );
 }

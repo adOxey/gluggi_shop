@@ -41,7 +41,7 @@ const AddProductForm = () => {
     handleSubmit,
     handleBlur,
     handleImageAsFile,
-    success,
+    status,
     handleUploadImage,
   } = useForm(initialState, validation, formReducer, handleFirebaseUpload);
 
@@ -56,14 +56,14 @@ const AddProductForm = () => {
   return (
     <div className={pageBody}>
       <div className={container}>
-        {success.submitted ? (
+        {status.message ? (
           <h1
             style={{
-              color: success.submitted ? `#50d890` : "#c02739",
+              color: status.isSubmitted ? `#50d890` : `#c02739`,
               margin: "auto",
             }}
           >
-            {success.message}
+            {status.message}
           </h1>
         ) : (
           <h1>Add New Product</h1>
