@@ -5,7 +5,7 @@ import classes from "./NavLinks.module.css";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 const NavLinks = () => {
-  const isLoggedIn = useContext(AuthContext);
+  const values = useContext(AuthContext);
   const history = useHistory();
 
   const handleSignOut = async () => {
@@ -26,11 +26,11 @@ const NavLinks = () => {
         <Link to="/products">Products</Link>
       </li>
 
-      {isLoggedIn && (
+      {values.isLoggedIn && (
         <>
-          <li>
+          {/* <li>
             <Link to="/addproduct">Add Product</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/rate-us">Rate us</Link>
           </li>
@@ -39,10 +39,15 @@ const NavLinks = () => {
               Sign out
             </a>
           </li>
+          {values.isAdmin && (
+            <li>
+              <Link to="/admin">Admin</Link>
+            </li>
+          )}
         </>
       )}
 
-      {!isLoggedIn && (
+      {!values.isLoggedIn && (
         <>
           <li>
             <Link to="/sign-up">Sign up</Link>

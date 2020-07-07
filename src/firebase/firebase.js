@@ -2,6 +2,7 @@ import * as firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import "firebase/storage";
+import "firebase/functions";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -21,8 +22,9 @@ const gluggiProject = firebase.initializeApp(config);
 export const PRODUCTS = "products";
 export const REVIEWS = "reviews";
 
-// Accessable firebase services via exports
+// Accessible firebase services via exports
 // It's important that firebase is initialized only once
 export const gluggiFirestore = gluggiProject.firestore();
 export const gluggiAuth = gluggiProject.auth();
 export const gluggiStorage = gluggiProject.storage();
+export const gluggiFunctions = gluggiProject.functions();

@@ -11,11 +11,11 @@ Big issues:
   ☐ Enable realtime datebase. When products is added i want to have that product rendered on page without need to refresh products page which is case now.
   ✔ Implement fully functional Search component @done(20-06-12 16:15)
   ☐ Search queries needs debounde function to be optimal. Now is clunky.
-  ✔ Implement fully functional Reviews @done(20-07-04 16:55)
-    ✔ Need indicator that review is submitted. @done(20-07-04 16:55)
-    ✔ Need error message if form is completed but not one star is slected. Only reviews with atlest one star may be submitted. @done(20-07-04 15:50)
+  ✔ Implement fully functional Reviews @done(20-07-06 23:42)
   ☐ Need to do integration od Stripe package to Checkout component.
-  ☐ Split users and admins via Firebase Admin SDK and grant them diferent set of rights.
+  ✔ Split users and admins via Firebase Admin SDK and grant them diferent set of rights. @done(20-07-06 21:39)
       I will probably need to use Firebase functions or some kinda of server for Firebase Admin SDK. 
       I should never be in the front end part of app.
-  ✔ Make Modal UI component responsive on mobile devices. @done(20-07-02 23:28)
+  ✔ Make Modal UI component responsive on mobile devices. @done(20-07-01 19:54)
+   ☐ Add sceleton UI or spinner for featured reviews component.
+   

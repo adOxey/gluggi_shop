@@ -2,7 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import classes from "./Form.module.css";
 
-function Form({ className, onSubmit, autoComplete, children, ...props }) {
+function Form({
+  className,
+  onSubmit,
+  autoComplete,
+  style,
+  children,
+  ...props
+}) {
   return (
     <>
       <form
@@ -10,6 +17,7 @@ function Form({ className, onSubmit, autoComplete, children, ...props }) {
         onSubmit={onSubmit}
         autoComplete={autoComplete}
         noValidate
+        style={style}
       >
         {children}
       </form>
@@ -25,6 +33,7 @@ Form.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func,
   autoComplete: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default Form;

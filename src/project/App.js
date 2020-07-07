@@ -10,6 +10,7 @@ import Cart from "./Main/Cart/Cart";
 import SignUp from "./Main/SignUp/SignUp";
 import ProductInfoPage from "./Main/ProductInfoPage/ProductInfoPage";
 import ReviewPage from "./Main/ReviewPage/ReviewPage";
+import Admin from "./Main/Admin/Admin";
 
 const App = () => {
   return (
@@ -27,7 +28,7 @@ const App = () => {
             <Route path="/sign-in">
               <SignIn />
             </Route>
-            <Route path="/addproduct">
+            <Route path="/add-product">
               <AddProductForm />
             </Route>
             <Route path="/rate-us">
@@ -41,6 +42,9 @@ const App = () => {
             </Route>
             <Route path="/products">
               <ProductsPage />
+            </Route>
+            <Route path="/admin">
+              <Admin />
             </Route>
           </Switch>
         </Router>

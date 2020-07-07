@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
   const [values, dispatch] = React.useReducer(reducer, initialState);
-  const [status, setStatus] = useState({ isSubmited: false, message: "" });
+  const [status, setStatus] = useState({ isSubmitted: false, message: "" });
 
   useEffect(() => {
     let mounted = true;
@@ -60,7 +60,7 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
       dispatch({ type: "SUBMIT_FORM" });
       setStatus({
         ...status,
-        isSubmited: true,
+        isSubmitted: true,
         message: "Submitted Successfully",
       });
       window.scrollTo(0, 0);
@@ -68,7 +68,7 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
       dispatch({ type: "VALIDATE_ONSUBMIT", payload: err });
       setStatus({
         ...status,
-        isSubmited: false,
+        isSubmitted: false,
         message: "Error ! All mandatory fields must be filled.",
       });
       window.scrollTo(0, 0);

@@ -26,7 +26,7 @@ const Card = ({
     BtnPosition,
   } = classes;
 
-  const isLoggedIn = useContext(AuthContext);
+  const values = useContext(AuthContext);
 
   return (
     <section className={Container}>
@@ -45,7 +45,7 @@ const Card = ({
         >
           {title}
         </Link>
-        {isLoggedIn && <button onClick={removeProduct}>x</button>}
+        {values.isAdmin && <button onClick={removeProduct}>x</button>}
       </h2>
       <p className={Desc}>{description}</p>
       <div className={BtnPosition}>{children}</div>
