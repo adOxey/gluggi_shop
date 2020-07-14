@@ -8,9 +8,14 @@ import ProductsList from "./ProductsList/ProductsList";
 
 const ProductList = () => {
   const { quote, iconStyle } = classes;
-  const { products, addToCart, loading, removeProduct, searched } = useContext(
-    ProductsContext
-  );
+  const {
+    products,
+    addToCart,
+    loading,
+    removeProduct,
+    searched,
+    loadMoreProducts,
+  } = useContext(ProductsContext);
 
   const checkedIcon = (
     <FontAwesomeIcon icon={faCheckCircle} size="2x" className={iconStyle} />
@@ -29,6 +34,7 @@ const ProductList = () => {
           removeProduct={removeProduct}
           addToCart={addToCart}
           checkedIcon={checkedIcon}
+          loadMore={loadMoreProducts}
         />
       ) : (
         <SearchedProductsList

@@ -91,7 +91,7 @@ const PaymentForm = () => {
         <div className={btnPurchase}>
           <Button
             handleClick={handlePayment}
-            size={{ height: "45px", width: "130px" }}
+            style={{ height: "45px", width: "130px" }}
           >
             Purchase
           </Button>
@@ -100,7 +100,7 @@ const PaymentForm = () => {
           <Button
             handleClick={handleReset}
             variant="info"
-            size={{ height: "45px", width: "130px" }}
+            style={{ height: "45px", width: "130px" }}
           >
             Reset
           </Button>

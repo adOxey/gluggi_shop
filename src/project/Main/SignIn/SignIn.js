@@ -75,7 +75,7 @@ const SignIn = () => {
             error={values.errors.password}
             isTouched={values.isTouched.password}
           />
-          <Button handleClick={handleSubmit} size={{ width: "100%" }}>
+          <Button handleClick={handleSubmit} style={{ width: "100%" }}>
             Sign in
           </Button>
           <p style={{ color: "red", paddingTop: "10px" }}>{authErrorMessage}</p>

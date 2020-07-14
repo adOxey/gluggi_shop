@@ -1,19 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 import classes from "./Button.module.css";
 
-const Button = ({ handleClick, disabled, variant, size, children }) => {
-  const { btn, btnPrimary, btnRemove, btnInfo } = classes;
+const Button = ({ handleClick, disabled, variant, style, children }) => {
+  const { btn, Primary, Remove, Info, Transparent } = classes;
 
   const getVariant = (variant) => {
     switch (variant) {
       case "primary":
-        return `${btn} ${btnPrimary}`;
+        return `${btn} ${Primary}`;
       case "remove":
-        return `${btn} ${btnRemove}`;
+        return `${btn} ${Remove}`;
       case "info":
-        return `${btn} ${btnInfo}`;
+        return `${btn} ${Info}`;
+      case "transparent":
+        return `${Transparent}`;
       default:
-        return `${btn} ${btnPrimary}`;
+        return `${btn} ${Primary}`;
     }
   };
 
@@ -22,11 +25,22 @@ const Button = ({ handleClick, disabled, variant, size, children }) => {
       className={getVariant(variant)}
       onClick={handleClick}
       disabled={disabled}
-      style={size}
+      style={style}
     >
       {children}
     </button>
   );
+};
+
+Button.defaultProps = {
+  variant: `${classes.btn} ${classes.Primary}`,
+};
+
+Button.propTypes = {
+  handleClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  variant: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default Button;

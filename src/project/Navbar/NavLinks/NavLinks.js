@@ -28,9 +28,6 @@ const NavLinks = () => {
 
       {values.isLoggedIn && (
         <>
-          {/* <li>
-            <Link to="/addproduct">Add Product</Link>
-          </li> */}
           <li>
             <Link to="/rate-us">Rate us</Link>
           </li>

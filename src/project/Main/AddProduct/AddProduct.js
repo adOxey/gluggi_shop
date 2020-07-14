@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
-import classes from "./AddProductForm.module.css";
+import classes from "./AddProduct.module.css";
 import useForm from "../../../shared/hooks/useForm";
 import validation from "./validation";
 import { PRODUCTS } from "../../../firebase/firebase";
 import useFirestore from "../../../shared/hooks/useFirestore";
-import { formReducer } from "../.././../reducers/formReducer";
+import { formReducer } from "../../../reducers/formReducer";
 import { Button, Form, FormInput } from "../../../shared/components";
 
-const AddProductForm = () => {
+const AddProduct = () => {
   const { container, pageBody } = classes;
-
-  const { addToFirestore, handleFirebaseUpload } = useFirestore(PRODUCTS);
 
   const initialState = {
     productName: "",
@@ -35,6 +33,7 @@ const AddProductForm = () => {
     completed: false,
   };
 
+  const { addToFirestore, handleFirebaseUpload } = useFirestore(PRODUCTS);
   const {
     values,
     handleChange,
@@ -55,19 +54,19 @@ const AddProductForm = () => {
 
   return (
     <div className={pageBody}>
+      {status.message ? (
+        <h1
+          style={{
+            color: status.isSubmitted ? `#50d890` : `#c02739`,
+            margin: "auto",
+          }}
+        >
+          {status.message}
+        </h1>
+      ) : (
+        <h1>Add New Product</h1>
+      )}
       <div className={container}>
-        {status.message ? (
-          <h1
-            style={{
-              color: status.isSubmitted ? `#50d890` : `#c02739`,
-              margin: "auto",
-            }}
-          >
-            {status.message}
-          </h1>
-        ) : (
-          <h1>Add New Product</h1>
-        )}
         <Form onSubmit={handleSubmit}>
           <FormInput
             label="Product name:"
@@ -110,7 +109,7 @@ const AddProductForm = () => {
             isTouched={values.isTouched.ingredients}
           />
           <FormInput
-            label="Alergy Advice:"
+            label="Allergy Advice:"
             type="text"
             name="alergyAdvice"
             onBlur={handleBlur}
@@ -148,11 +147,12 @@ const AddProductForm = () => {
             error={values.errors.imageAsUrl}
             isTouched={values.isTouched.imageAsUrl}
             handleUpload={handleUploadImage}
+            uploadStatus={values.imageAsUrl}
           />
           <br />
           <Button
             handleClick={handleSubmit}
-            size={{ width: "100%", fontSize: "16px" }}
+            style={{ width: "100%", fontSize: "16px" }}
           >
             SUBMIT PRODUCT
           </Button>
@@ -162,4 +162,4 @@ const AddProductForm = () => {
   );
 };
 
-export default AddProductForm;
+export default AddProduct;

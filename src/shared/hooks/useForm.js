@@ -46,8 +46,8 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
     dispatch({ type: "HANDLE_IMAGE_AS_FILE", payload: image });
   };
 
-  const handleUploadImage = async (e) => {
-    e.preventDefault();
+  const handleUploadImage = () => {
+    // e.preventDefault();
     handleFirebaseUpload(values, getImageUrl);
   };
 
@@ -69,7 +69,7 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
       setStatus({
         ...status,
         isSubmitted: false,
-        message: "Error ! All mandatory fields must be filled.",
+        message: "All mandatory fields must be filled.",
       });
       window.scrollTo(0, 0);
     }

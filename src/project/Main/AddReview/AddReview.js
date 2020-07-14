@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import classes from "./ReviewPage.module.css";
+import classes from "./AddReview.module.css";
 import useForm from "../../../shared/hooks/useForm";
 import useFirestore from "../../../shared/hooks/useFirestore";
 import { REVIEWS, gluggiAuth } from "../../../firebase/firebase";
@@ -13,7 +13,7 @@ import {
 } from "../../../shared/components";
 import StarRating from "./StarRating/StarRating";
 
-function ReviewForm() {
+function AddReview() {
   const [grade, setGrade] = useState(0);
   const [author, setAuthor] = useState("");
   const [status, setStatus] = useState({ isSubmitted: false, message: "" });
@@ -106,4 +106,4 @@ function ReviewForm() {
   );
 }
 
-export default ReviewForm;
+export default AddReview;

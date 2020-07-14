@@ -1,32 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { REVIEWS, gluggiFirestore } from "../../../../firebase/firebase";
+import React from "react";
 import classes from "./FeaturedReviews.module.css";
-import { ReviewBox } from "../../../../shared/components";
+import { Link } from "react-router-dom";
+import { ReviewBox, Button, Spinner } from "../../../../shared/components";
 import { showCorrectTimestamp } from "../../../../shared/utils/compareTimestamps";
 
-function FeaturedReviews() {
+function FeaturedReviews({ reviews, isLoading }) {
   const { Container, TitleWrapper, ReviewsWrapper } = classes;
-  const [reviews, setReviews] = useState([]);
 
-  useEffect(() => {
-    const unsubscribe = gluggiFirestore
-      .collection(REVIEWS)
-      .onSnapshot((snapshot) => {
-        if (snapshot.size) {
-          let myReviews = [];
-          snapshot.forEach((doc) =>
-            myReviews.push({ id: doc.id, ...doc.data() })
-          );
-          setReviews(myReviews);
-        } else {
-          console.log("Collection empty or something went wrong");
-        }
-      });
+  const setFeaturedReviews = () => {
+    const reviewsCopy = [...reviews];
+    const filterReviews = reviewsCopy.filter((review) => {
+      if (review.grade >= 4) {
+        return review;
+      }
+      return null;
+    });
+    filterReviews.length = 4;
+    return filterReviews;
+  };
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  const featuredReviews = setFeaturedReviews();
 
   return (
     <div className={Container}>
@@ -41,20 +34,27 @@ function FeaturedReviews() {
         </h1>
       </div>
       <div className={ReviewsWrapper}>
-        {reviews.map((review) => {
-          const { id, grade, title, description, author, date } = review;
-          return (
-            <ReviewBox
-              key={id}
-              rating={grade}
-              title={title}
-              description={description}
-              author={author}
-              date={showCorrectTimestamp(date.toMillis())}
-            />
-          );
-        })}
+        {isLoading ? (
+          <Spinner size="4x" />
+        ) : (
+          featuredReviews.map((review) => {
+            const { id, grade, title, description, author, date } = review;
+            return (
+              <ReviewBox
+                key={id}
+                rating={grade}
+                title={title}
+                description={description}
+                author={author}
+                date={showCorrectTimestamp(date.toMillis())}
+              />
+            );
+          })
+        )}
       </div>
+      <Link to="/reviews">
+        <Button variant="transparent">SEE ALL REVIEWS</Button>
+      </Link>
     </div>
   );
 }

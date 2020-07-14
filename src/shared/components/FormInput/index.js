@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classes from "./FormInput.module.css";
+import { Spinner } from "../../components";
 
 const FormInput = ({
   name,
@@ -14,8 +15,40 @@ const FormInput = ({
   isTouched,
   children,
   handleUpload,
+  uploadStatus,
   ...props
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const activateSpinnerAndUpload = (e) => {
+    e.preventDefault();
+    if (isTouched) {
+      setIsLoading(true);
+    }
+    handleUpload();
+  };
+
+  useEffect(() => {
+    if (uploadStatus) {
+      setIsLoading(false);
+    }
+  }, [uploadStatus]);
+
+  function showStatus() {
+    if (isLoading) {
+      return <Spinner size="2x" />;
+    }
+    if (!isLoading) {
+      if (uploadStatus) {
+        return "UPLOADED";
+      } else {
+        return "UPLOAD IMAGE";
+      }
+    }
+  }
+
+  const status = showStatus();
+
   return (
     <>
       <label htmlFor={name}>{label}</label>
@@ -30,10 +63,15 @@ const FormInput = ({
         style={isTouched && error ? { border: "solid 1px red" } : null}
       />
       {type === "file" ? (
-        <button onClick={handleUpload} className={classes.uploadBtn}>
-          <span>UPLOAD IMAGE</span>
+        <button
+          onClick={activateSpinnerAndUpload}
+          className={!uploadStatus ? classes.uploadBtn : classes.disabled}
+          disabled={uploadStatus && true}
+        >
+          <span>{status}</span>
         </button>
       ) : null}
+
       <div style={{ height: "25px" }}>
         {isTouched && error ? <p style={{ color: "red" }}>{error}</p> : null}
       </div>
@@ -61,6 +99,7 @@ FormInput.propTypes = {
   isTouched: PropTypes.bool,
   error: PropTypes.string,
   handleUpload: PropTypes.func,
+  uploadStatus: PropTypes.string,
 };
 
 export default FormInput;

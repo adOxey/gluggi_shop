@@ -1,11 +1,14 @@
 import React from "react";
-import ecommerceLogo from "../../../assets/imgs/Logo.png";
+import gluggiLogo from "../../../assets/imgs/Logo.png";
 import classes from "./Logo.module.css";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
     <div>
-      <img src={ecommerceLogo} className={classes.SiteLogo} alt="Logo" />
+      <Link to="/">
+        <img src={gluggiLogo} className={classes.SiteLogo} alt="Logo" />
+      </Link>
     </div>
   );
 };

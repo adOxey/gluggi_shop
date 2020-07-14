@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import useFirestore from "../shared/hooks/useFirestore";
 import { gluggiFirestore, PRODUCTS } from "../firebase/firebase";
+import { debounce } from "../shared/utils/debounceFunction";
 
 export const ProductsContext = createContext();
 
@@ -10,57 +11,70 @@ export const ProductsProvider = (props) => {
   const [cartNumber, setCartNumber] = useState(0);
   const [loading, setLoading] = useState(true);
   const [searched, setSearched] = useState([]);
+  const [limit, setLimit] = useState(6);
 
-  const { removeFromFirestore } = useFirestore(
-    PRODUCTS
-  );
+  const { removeFromFirestore } = useFirestore(PRODUCTS);
 
-  // Compare products from Firestore and Local Storage on mount.
-
+  // Fetch products from db and compare to Local Storage.
   useEffect(() => {
-    const fetchData = async () => {
-      const localStorageKeyValue = JSON.parse(
-        localStorage.getItem("cartProduct")
-      );
+    const unsubscribe = gluggiFirestore
+      .collection(PRODUCTS)
+      .limit(limit)
+      .onSnapshot((snapshot) => {
+        if (snapshot.size) {
+          let products = [];
+          snapshot.forEach((doc) =>
+            products.push({ id: doc.id, ...doc.data() })
+          );
 
-      const getCollection = await gluggiFirestore
-        .collection(PRODUCTS)
-        .get();
+          const localStorageItems = JSON.parse(
+            localStorage.getItem("cartProduct")
+          );
 
-      let getData = getCollection.docs.map((doc) => ({
-        ...doc.data(),
-      }));
-      getData.sort((a, b) => (a.title > b.title ? 1 : -1));
+          if (!localStorageItems) {
+            setProducts(products);
+          }
 
-      if (!localStorageKeyValue) {
-        setProducts([...getData]);
-      } else {
-        const filteredProducts = getData.filter(
-          (elem) => !localStorageKeyValue.find((el) => elem.id === el.id)
-        );
-        const updatedProducts = [...filteredProducts, ...localStorageKeyValue];
-        setCartNumber(localStorageKeyValue.length);
-        setProductsInCart([...localStorageKeyValue]);
-        setProducts([
-          ...updatedProducts.sort((a, b) => (a.title > b.title ? 1 : -1)),
-        ]);
-      }
-      setLoading(false);
+          if (localStorageItems) {
+            const unique = products.filter((product) => {
+              localStorageItems.find((item) => {
+                if (item.id === product.id) {
+                  product.disabled = true;
+                }
+              });
+              return product;
+            });
+
+            setCartNumber(localStorageItems.length);
+            setProductsInCart(localStorageItems);
+            setProducts(unique);
+          }
+          setLoading(false);
+        } else {
+          console.log("Collection empty or something went wrong");
+        }
+      });
+
+    return () => {
+      unsubscribe();
     };
+  }, [limit]);
 
-    fetchData();
-  }, []);
-
-  // Search products
-  const handleSearch = (searchedValue) => {
-    setSearched([...searchedValue]);
-    setLoading(false);
+  // Increase number of products fetched from db
+  const loadMoreProducts = () => {
+    setLimit((prevState) => prevState + 3);
   };
-  const handleReload = () => {
+
+  // Handle search of products with a help of debounce function
+  const handleSearch = debounce(function (searchedValue) {
     setLoading(true);
-  };
+    setSearched([...searchedValue]);
+    setTimeout(() => {
+      setLoading(false);
+    }, 400);
+  }, 400);
 
-  // Adds product to our Cart
+  // Add product to Product cart
   const addToCart = (index) => {
     const copiedProducts = [...products];
     const clickedProduct = copiedProducts[index];
@@ -75,11 +89,10 @@ export const ProductsProvider = (props) => {
     setProductsInCart((prevState) => updatedCart);
     handleProductsCount(updatedCart.length);
 
-    // Storing product in localStorage
     localStorage.setItem("cartProduct", JSON.stringify(updatedCart));
   };
 
-  // Removes product from  Cart
+  // Remove product from  Product cart
   const removeFromCart = (id) => {
     const copiedCartState = [...productsInCart];
     const productIndex = copiedCartState.findIndex(
@@ -98,34 +111,35 @@ export const ProductsProvider = (props) => {
     handleProductsCount(copiedCartState.length);
     setProducts([...copiedProducts]);
 
-    // Updating product in localStorage
     localStorage.setItem("cartProduct", JSON.stringify(copiedCartState));
     const removeItem = copiedCartState;
     removeItem.length === 0 && localStorage.removeItem("cartProduct");
   };
 
-  // Increase quantity of product in cart
+  // Increase quantity of a product in Product cart
   const increaseQuantity = (index) => {
     const copiedCartState = [...productsInCart];
     copiedCartState[index].quantity++;
     setProductsInCart([...copiedCartState]);
+    localStorage.setItem("cartProduct", JSON.stringify(copiedCartState));
   };
 
-  // Decrease quantity of product in cart
+  // Decrease quantity of a product in Product cart
   const decreaseQuantity = (index) => {
     const copiedCartState = [...productsInCart];
     if (copiedCartState[index].quantity > 1) {
       copiedCartState[index].quantity--;
     }
     setProductsInCart([...copiedCartState]);
+    localStorage.setItem("cartProduct", JSON.stringify(copiedCartState));
   };
 
-  // Count products in Cart and show that number in Navbar icon
+  // Count products in Cart and show that number in navigation icon
   const handleProductsCount = (inCartLength) => {
     return setCartNumber(inCartLength);
   };
 
-  // Remove product
+  // Remove product from database
   const removeProduct = (id) => {
     const stateCopy = [...products];
     const productIndex = stateCopy.findIndex((product) => product.id === id);
@@ -147,8 +161,8 @@ export const ProductsProvider = (props) => {
     handleProductsCount,
     removeProduct,
     handleSearch,
-    handleReload,
     searched,
+    loadMoreProducts,
   };
   return (
     <ProductsContext.Provider value={contextValue}>

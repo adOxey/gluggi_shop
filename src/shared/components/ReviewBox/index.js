@@ -36,12 +36,12 @@ function ReviewBox({ rating, title, author, description, date }) {
 
   return (
     <div className={Wrapper}>
-      {showRating}
+      <span>{showRating}</span>
       <h2>{title}</h2>
       <p className={Description}>"{description}"</p>
       <div className={Infos}>
         <p className={Author}>{author}</p>
-        {showTimeOfReview}
+        <span>{showTimeOfReview}</span>
       </div>
     </div>
   );

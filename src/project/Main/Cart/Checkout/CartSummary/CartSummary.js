@@ -12,12 +12,20 @@ const CartSummary = (props) => {
 
   const [coupon, setCoupon] = useState("");
   const [newPrice, setNewPrice] = useState(null);
+  const [couponError, setCouponError] = useState("");
 
   const applyCoupon = (e) => {
     e.preventDefault();
     const isValid = isValidCoupon(coupon);
     const priceWithCoupon = getPriceWithCoupon(isValid, totalCost);
     setNewPrice(priceWithCoupon);
+
+    if (!isValid) {
+      setCouponError("Invalid coupon!");
+    }
+    if (isValid) {
+      setCouponError("");
+    }
   };
 
   return (
@@ -55,7 +63,7 @@ const CartSummary = (props) => {
           </span>
         </p>
         {!newPrice ? null : (
-          <p style={{ color: "red" }}>
+          <p style={{ color: "#79bac1" }}>
             New total:
             <span style={{ fontWeight: "bold" }}>{newPrice.toFixed(2)}$</span>
           </p>
@@ -69,6 +77,7 @@ const CartSummary = (props) => {
           value={coupon}
         />
       </form>
+      <p style={{ color: "red" }}>{couponError && couponError}</p>
       <div className={backBtn}>
         <Button handleClick={applyCoupon}>Apply coupon</Button>
       </div>

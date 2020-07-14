@@ -35,22 +35,9 @@ p {
   width: 53%;
   font-size: 20px;
 }
-.text_container button {
-  font-family: "Roboto";
-  font-size: 18px;
-  margin-top: 25px;
-  border: 2px solid #79bac1;
-  background-color: transparent;
-  color: #79bac1;
-  border-radius: 15px;
-  height: 50px;
-  width: 155px;
-  outline: none;
-  cursor: pointer;
-}
-.text_container button:hover {
-  border: 2px solid #f7697b;
-  color: #f7697b;
+
+.text_container a {
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 960px) {

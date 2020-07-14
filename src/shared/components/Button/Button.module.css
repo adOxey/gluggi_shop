@@ -15,7 +15,7 @@
   transform: scale(0.9);
 }
 
-.btnPrimary {
+.Primary {
   margin: 0px;
   width: 149px;
   height: 48px;
@@ -24,11 +24,11 @@
   text-align: center;
 }
 
-.btnPrimary:hover {
+.Primary:hover {
   background: #e25366;
 }
 
-.btnPrimary:disabled {
+.Primary:disabled {
   background-color: rgb(255, 255, 255);
   box-shadow: none;
   color: rgb(27, 187, 75);
@@ -38,18 +38,18 @@
   padding: 0;
 }
 
-.btnRemove {
+.Remove {
   margin: 0 10px 0 0;
   width: 100px;
   height: 40px;
   background: #f7697b;
   color: #ffffff;
 }
-.btnRemove:hover {
+.Remove:hover {
   background: #e25366;
 }
 
-.btnInfo {
+.Info {
   text-align: center;
   width: 100px;
   height: 40px;
@@ -57,6 +57,27 @@
   color: #ffffff;
 }
 
-.btnInfo:hover {
+.Info:hover {
   background: #33a1ad;
+}
+
+.Transparent {
+  display: block;
+  margin: 20px auto;
+  height: 54px;
+  width: 180px;
+  border: 2px solid #79bac1;
+  border-radius: 8px;
+  outline: none;
+  background-color: transparent;
+  color: #79bac1;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.Transparent:hover {
+  color: #f7697b;
+  border-color: #f7697b;
+  transition-duration: 300ms;
 }

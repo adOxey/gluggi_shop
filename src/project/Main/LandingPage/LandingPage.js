@@ -3,15 +3,17 @@ import classes from "./LandingPage.module.css";
 import HeaderImage from "./HeaderImage/HeaderImage";
 import Benefits from "./Benefits/Benefits";
 import FeaturedReviews from "./FeaturedReviews/FeaturedReviews";
+import Footer from "./Footer/Footer";
 
-const LandingPage = () => {
+const LandingPage = ({ reviews, isLoading }) => {
   const { wrapper } = classes;
 
   return (
     <div className={wrapper}>
       <HeaderImage />
       <Benefits />
-      <FeaturedReviews />
+      <FeaturedReviews reviews={reviews} isLoading={isLoading} />
+      <Footer />
     </div>
   );
 };

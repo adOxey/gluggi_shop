@@ -26,7 +26,7 @@ function Admin() {
   return (
     <div className={container}>
       <div className={AddProduct}>
-        <Link to="/add-product">Add Product</Link>
+        <Link to="/add-product">Add product</Link>
       </div>
       <Form onSubmit={handleSubmit} style={{ width: "370px" }}>
         <p style={{ color: "#33a1ad" }}>{status && status}</p>
@@ -38,7 +38,7 @@ function Admin() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <Button size={{ width: "370px" }}>MAKE ADMIN</Button>
+        <Button style={{ width: "370px" }}>MAKE ADMIN</Button>
       </Form>
     </div>
   );

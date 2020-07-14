@@ -1,13 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Fuse from "fuse.js";
 import classes from "./SearchBar.module.css";
-
+import { gluggiFirestore, PRODUCTS } from "../../../firebase/firebase";
 import { ProductsContext } from "../../../contexts/ProductsContext";
+import { useHistory } from "react-router-dom";
+
+const { search_bar } = classes;
 
 const SearchBar = () => {
-  const { search_bar } = classes;
-  const { products, handleSearch, handleReload } = useContext(ProductsContext);
+  const { handleSearch } = useContext(ProductsContext);
   const [query, setQuery] = useState("");
+  const [products, setProducts] = useState([]);
+
+  const history = useHistory();
 
   const options = {
     isCaseSensitive: false,
@@ -23,17 +28,34 @@ const SearchBar = () => {
     keys: ["title", "ingredients"],
   };
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await gluggiFirestore.collection(PRODUCTS).get();
+      const products = data.docs.map((doc) => {
+        return { id: doc.id, ...doc.data() };
+      });
+      setProducts(products);
+    };
+    fetchProducts();
+  }, []);
+
   const fuse = new Fuse(products, options);
   let searchedProducts = fuse.search(query);
 
-  const handleChange = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch(searchedProducts);
+    setTimeout(() => {
+      history.push("/products?");
+    }, 500);
   };
 
   return (
     <div className={search_bar}>
-      <form onKeyUp={handleChange} onKeyDown={handleReload}>
+      <form
+        onKeyUp={() => handleSearch(searchedProducts)}
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           placeholder="Search by title or ingredients"

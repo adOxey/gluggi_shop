@@ -12,7 +12,7 @@ function SearchedProductsList({
   return (
     <div className={classes.list}>
       {loading ? (
-        <Spinner />
+        <Spinner size="4x" style={{ marginTop: "100px" }} />
       ) : (
         searched.map((product, index) => {
           return (

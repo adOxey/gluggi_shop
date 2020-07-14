@@ -3,15 +3,15 @@ import classes from "./Spinner.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-const Spinner = () => {
+const Spinner = ({ size, style }) => {
   return (
     <div className={classes.Loader}>
       <FontAwesomeIcon
         icon={faSpinner}
-        size="4x"
+        size={size}
         color="#f7697b"
+        style={style}
         spin
-        style={{ marginTop: "100px" }}
       />
     </div>
   );

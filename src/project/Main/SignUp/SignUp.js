@@ -33,7 +33,7 @@ const SignUp = (props) => {
     if (values.completed) {
       handleSignup();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.completed]);
 
   const handleSignup = async () => {
@@ -85,7 +85,7 @@ const SignUp = (props) => {
           error={values.errors.email}
           isTouched={values.isTouched.email}
         />
-        <Button handleClick={handleSubmit} size={{ width: "100%" }}>
+        <Button handleClick={handleSubmit} style={{ width: "100%" }}>
           Create an Account
         </Button>
       </Form>

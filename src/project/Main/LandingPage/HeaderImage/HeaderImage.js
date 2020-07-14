@@ -1,5 +1,7 @@
 import React from "react";
 import classes from "./HeaderImage.module.css";
+import { Link } from "react-router-dom";
+import { Button } from "../../../../shared/components";
 
 const HeaderImage = () => {
   const { container, text_container, ImgContainer } = classes;
@@ -15,7 +17,14 @@ const HeaderImage = () => {
             We are proud of keeping our customers healthy. <br />
             Buy best quality products at unbeatable low prices.
           </p>
-          <button>SHOP</button>
+          <Link to="/products">
+            <Button
+              variant="transparent"
+              style={{ margin: "20px 0", width: "155px" }}
+            >
+              SHOP
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

@@ -4,3 +4,7 @@
   flex-wrap: wrap;
   margin: auto;
 }
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+}
