@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import classes from "./Admin.module.css";
 import { Link } from "react-router-dom";
 import { gluggiFunctions } from "../../../firebase/firebase";
-
 import { Form, FormInput, Button } from "../../../shared/components";
 
-function Admin() {
-  const { container, AddProduct } = classes;
+const { container, AdminLink } = classes;
 
+function Admin() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
 
@@ -25,8 +24,11 @@ function Admin() {
 
   return (
     <div className={container}>
-      <div className={AddProduct}>
+      <div className={AdminLink}>
         <Link to="/add-product">Add product</Link>
+      </div>
+      <div className={AdminLink}>
+        <Link to="/edit-product">Edit product</Link>
       </div>
       <Form onSubmit={handleSubmit} style={{ width: "370px" }}>
         <p style={{ color: "#33a1ad" }}>{status && status}</p>

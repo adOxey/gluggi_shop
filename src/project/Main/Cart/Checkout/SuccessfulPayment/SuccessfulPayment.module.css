@@ -1,0 +1,33 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 50%;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+}
+
+.Container h1 {
+  margin: 10px 0 10px 0;
+  font-size: 32px;
+  color: #79bac1;
+}
+
+.Container img {
+  padding: 20px 0 20px 0;
+}
+
+.Container p,
+.Container small {
+  padding-bottom: 5px;
+  font-size: 16px;
+  color: #595959;
+}
+
+.Container small a {
+  padding-top: 8px;
+  color: #f7697b;
+  text-decoration: none;
+}

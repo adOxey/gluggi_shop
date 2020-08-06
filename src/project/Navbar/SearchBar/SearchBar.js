@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import Fuse from "fuse.js";
 import classes from "./SearchBar.module.css";
 import { gluggiFirestore, PRODUCTS } from "../../../firebase/firebase";
@@ -11,6 +11,7 @@ const SearchBar = () => {
   const { handleSearch } = useContext(ProductsContext);
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState([]);
+  const [fetch, setFetch] = useState(false);
 
   const history = useHistory();
 
@@ -28,7 +29,27 @@ const SearchBar = () => {
     keys: ["title", "ingredients"],
   };
 
+  const fuse = new Fuse(products, options);
+  const searchedProducts = fuse.search(query);
+
+  const isFirstRun = useRef(true);
+
+  // Triggering this effect state var fetch will be changed to true
+  // Which will trigger second useEffect for fetching products.
   useEffect(() => {
+    if (query) {
+      setFetch(true);
+    }
+  }, [query]);
+
+  // This effect wont run on initial render
+  // It will run only when fetch dependency changes.
+  useEffect(() => {
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
+
     const fetchProducts = async () => {
       const data = await gluggiFirestore.collection(PRODUCTS).get();
       const products = data.docs.map((doc) => {
@@ -36,11 +57,10 @@ const SearchBar = () => {
       });
       setProducts(products);
     };
-    fetchProducts();
-  }, []);
 
-  const fuse = new Fuse(products, options);
-  let searchedProducts = fuse.search(query);
+    fetchProducts();
+    console.log("SearchBar - useEffect");
+  }, [fetch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

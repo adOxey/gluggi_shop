@@ -78,7 +78,7 @@
   color: #8d8c8c;
   margin: 0;
   padding: 0 20px 10px 20px;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 15px;
   line-height: 1.6em;
   letter-spacing: 0.05em;
@@ -89,19 +89,12 @@
   bottom: 30px;
   right: 25px;
   margin: 0px;
-  font-family: "Bentham", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 30px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
   letter-spacing: 0.05em;
-  color: #3f3e3e;
-  align-self: center;
+  color: #595959;
 }
-
-/*************************************************************/
-/*************************************************************/
-/***************************************************************/
 
 .ImgContainer {
   position: relative;
@@ -139,4 +132,17 @@
 
 .Icon:hover {
   color: rgba(255, 254, 254, 0.8);
+}
+
+.EditSvg {
+  color: #474747;
+}
+
+@media screen and (max-width: 470px) {
+  .Heading {
+    font-size: 20px;
+  }
+  .Desc {
+    font-size: 14px;
+  }
 }

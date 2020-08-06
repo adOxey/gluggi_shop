@@ -6,3 +6,5 @@ export { default as ReviewBox } from "./ReviewBox";
 export { default as Form } from "./Form";
 export { default as FormInput } from "./FormInput";
 export { default as FormTextarea } from "./FormTextarea";
+export { default as Accordion } from "./Accordion";
+export { default as ItemCard } from "./ItemCard";

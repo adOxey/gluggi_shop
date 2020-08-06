@@ -1,3 +1,8 @@
+.Container {
+  max-width: 100%;
+  padding: 10px;
+}
+
 .Wrapper {
   background-color: #fff;
   display: flex;
@@ -18,10 +23,24 @@
   box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
 }
 
+.Loader {
+  background-color: #fff;
+  box-sizing: border-box;
+  max-width: 900px;
+  border: 1px solid #e4e2e2;
+  border-radius: 15px;
+  margin: 20px auto;
+  padding: 25%;
+  -webkit-box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
+  -moz-box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
+  box-shadow: 7px 4px 17px -5px rgba(143, 137, 143, 0.25);
+}
+
 .MainImg {
-  margin: auto;
+  margin: 0 auto;
   max-height: 400px;
   max-width: 400px;
+  width: 100%;
 }
 .Wrapper h2 {
   margin: 20px 0 0 0;
@@ -41,4 +60,21 @@
 }
 .IconStyle {
   padding-right: 10px;
+}
+
+@media screen and (max-width: 414px) {
+  .Wrapper h2 {
+    margin: 20px 0 0 0;
+    font-size: 2rem;
+    color: #474747;
+  }
+  .Wrapper h3 {
+    margin: 20px 0 0 0;
+    font-size: 1rem;
+    color: #474747;
+    padding-bottom: 5px;
+  }
+  .Wrapper p {
+    font-size: 0.85em;
+  }
 }

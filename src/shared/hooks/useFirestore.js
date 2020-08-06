@@ -57,6 +57,31 @@ const useFirestore = (collection) => {
         });
   };
 
+  // Update product in firestore
+  const updateProductInfo = (values) => {
+    gluggiFirestore
+      .collection(`${collection}`)
+      .doc(`${values.docName}`)
+      .update({
+        title: values.productName.trim(),
+        description: values.shortDets.trim(),
+        details: values.fullDesc.trim(),
+        ingredients: values.ingredients.trim(),
+        price: Number(values.price),
+        quantity: 1,
+        alergy_advice: values.alergyAdvice.trim(),
+        disabled: false,
+        id: `${values.docName}`,
+        image: values.imageAsUrl,
+      })
+      .then(() => {
+        console.log("Document successfully updated!");
+      })
+      .catch((error) => {
+        console.error("Error updating document: ", error);
+      });
+  };
+
   // Add image to Firebase Storage
   const handleFirebaseUpload = (values, getImageUrl) => {
     console.log("handleFirebaseUpload", values);
@@ -99,6 +124,7 @@ const useFirestore = (collection) => {
     removeFromFirestore,
     addToFirestore,
     handleFirebaseUpload,
+    updateProductInfo,
   };
 };
 

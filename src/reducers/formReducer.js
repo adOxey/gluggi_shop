@@ -45,6 +45,11 @@ export const formReducer = (state, action) => {
       };
     case "RESET_FORM":
       return action.payload;
+    case "POPULATE_FIELDS":
+      return {
+        ...state,
+        ...action.payload,
+      };
     default:
       return state;
   }

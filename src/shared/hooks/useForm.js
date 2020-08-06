@@ -47,7 +47,6 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
   };
 
   const handleUploadImage = () => {
-    // e.preventDefault();
     handleFirebaseUpload(values, getImageUrl);
   };
 
@@ -75,6 +74,10 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
     }
   };
 
+  const populateFormFields = (updatedState) => {
+    dispatch({ type: "POPULATE_FIELDS", payload: updatedState });
+  };
+
   return {
     values,
     handleChange,
@@ -82,6 +85,7 @@ const useForm = (initialState, validation, reducer, handleFirebaseUpload) => {
     handleBlur,
     status,
     handleImageAsFile,
+    populateFormFields,
     handleUploadImage,
   };
 };

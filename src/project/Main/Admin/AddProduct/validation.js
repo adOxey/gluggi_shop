@@ -9,8 +9,8 @@ const validation = (values) => {
 
   if (!values.shortDets) {
     errors.shortDets = "Required";
-  } else if (values.shortDets.length <= 201) {
-    errors.shortDets = "Short Details must be at least 201 characters long";
+  } else if (values.shortDets.length <= 60) {
+    errors.shortDets = "Short Details must be at least 60 characters long";
   } else if (values.shortDets.length >= 288) {
     errors.shortDets =
       "You exceded max character limit of 234 fro Short Details";

@@ -4,6 +4,8 @@ import "firebase/auth";
 import "firebase/storage";
 import "firebase/functions";
 
+// Firebase config - it is supposed to be public info.
+// That's why is a must to edit firebase security rules.
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -15,7 +17,6 @@ const config = {
 };
 
 // Initialize Firebase
-
 const gluggiProject = firebase.initializeApp(config);
 
 // Collections

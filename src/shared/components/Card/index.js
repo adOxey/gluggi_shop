@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import classes from "./Card.module.css";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
+
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const Card = ({
   image,
@@ -49,7 +50,7 @@ const Card = ({
       </h2>
       <p className={Desc}>{description}</p>
       <div className={BtnPosition}>{children}</div>
-      <p className={Cost}>${price.toFixed(2)}</p>
+      <p className={Cost}>{price.toFixed(2)} $</p>
     </section>
   );
 };

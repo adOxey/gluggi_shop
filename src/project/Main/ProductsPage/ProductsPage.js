@@ -11,7 +11,7 @@ const ProductList = () => {
   const {
     products,
     addToCart,
-    loading,
+    isLoading,
     removeProduct,
     searched,
     loadMoreProducts,
@@ -25,12 +25,12 @@ const ProductList = () => {
     <div>
       <h2 className={quote}>
         A Healthy Lifestyle Not Only Changes Your Body, It Changes Your Mind,
-        Your Attitude And Your Mood
+        Your Attitude And Your Mood!
       </h2>
       {searched.length <= 0 ? (
         <ProductsList
           products={products}
-          loading={loading}
+          isLoading={isLoading}
           removeProduct={removeProduct}
           addToCart={addToCart}
           checkedIcon={checkedIcon}
@@ -42,7 +42,7 @@ const ProductList = () => {
           removeProduct={removeProduct}
           addToCart={addToCart}
           checkedIcon={checkedIcon}
-          loading={loading}
+          isLoading={isLoading}
         />
       )}
     </div>

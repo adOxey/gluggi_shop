@@ -1,0 +1,160 @@
+.ProductContainer {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 820px;
+  padding: 20px 27px;
+  margin: 10px auto;
+  border: 1px solid #e5e5e5;
+  border-radius: 9px;
+  background-color: white;
+  font-family: "Raleway", sans-serif;
+}
+
+.ItemImage {
+  margin-right: 20px;
+  min-width: 130px;
+  min-height: 130px;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.MiddleSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 540px;
+}
+
+.MiddleSection h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 22px;
+  color: #595959;
+}
+
+.MiddleSection p {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: justify;
+  color: #939393;
+}
+
+.MiddleBottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MiddleBottom small {
+  font-weight: 700;
+  font-size: 24px;
+  color: #595959;
+}
+
+.MiddleBottom div {
+  width: 187px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.MiddleBottom div a {
+  text-decoration: none;
+}
+
+.MiddleBottom div button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90px;
+  height: 30px;
+  padding: 0;
+  background-color: white;
+  color: #79bac1;
+  outline: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.MiddleBottom div button:hover {
+  color: white;
+  background-color: #79bac1;
+  transition-duration: 450ms;
+  border: none;
+}
+
+.ItemQuantity {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ItemQuantity button {
+  padding: 0;
+  border: 0;
+  background-color: white;
+  cursor: pointer;
+}
+
+.ItemQuantity small {
+  font-weight: 400;
+  font-size: 24px;
+  color: #79bac1;
+}
+
+@media screen and (max-width: 850px) {
+  .ProductContainer {
+    width: 90vw;
+  }
+  .ItemQuantity {
+    justify-content: space-around;
+    padding-left: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .ProductContainer {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ItemImage {
+    min-width: 70px;
+    min-height: 70px;
+    width: 70px;
+    height: 70px;
+    padding-bottom: 7px;
+  }
+
+  .MiddleSection h1 {
+    padding-bottom: 5px;
+    font-size: 18px;
+  }
+
+  .MiddleBottom {
+    padding-top: 10px;
+  }
+
+  .MiddleBottom small {
+    font-size: 20px;
+  }
+
+  .ItemQuantity {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    height: 100px;
+  }
+
+  .ItemQuantity small {
+    font-size: 20px;
+  }
+}

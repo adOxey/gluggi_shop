@@ -7,14 +7,14 @@ function SearchedProductsList({
   removeProduct,
   addToCart,
   checkedIcon,
-  loading,
+  isLoading,
 }) {
   return (
     <div className={classes.list}>
-      {loading ? (
+      {isLoading ? (
         <Spinner size="4x" style={{ marginTop: "100px" }} />
       ) : (
-        searched.map((product, index) => {
+        searched.map((product) => {
           return (
             <Card
               key={product.item.id}
@@ -26,7 +26,7 @@ function SearchedProductsList({
               removeProduct={() => removeProduct(product.item.id)}
             >
               <Button
-                handleClick={() => addToCart(index)}
+                handleClick={() => addToCart(product.item)}
                 disabled={product.item.disabled}
               >
                 {product.item.disabled ? (

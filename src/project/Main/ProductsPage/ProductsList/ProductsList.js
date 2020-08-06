@@ -1,12 +1,12 @@
 import React from "react";
 import classes from "./ProductsList.module.css";
-import { Spinner, Card, Button } from "../../../../shared/components";
+import { Spinner, Card, Button, ItemCard } from "../../../../shared/components";
 
 const { list, loadMoreWrapper } = classes;
 
 function ProductsList({
   products,
-  loading,
+  isLoading,
   removeProduct,
   addToCart,
   checkedIcon,
@@ -15,12 +15,35 @@ function ProductsList({
   return (
     <>
       <div className={list}>
-        {loading ? (
+        {isLoading ? (
           <Spinner size="4x" style={{ marginTop: "100px" }} />
         ) : (
-          products.map((product, index) => {
+          products.map((product) => {
             return (
-              <Card
+              // <Card
+              //   key={product.id}
+              //   id={product.id}
+              //   title={product.title}
+              //   description={product.description}
+              //   price={product.price}
+              //   image={product.image}
+              //   removeProduct={() => removeProduct(product.id)}
+              // >
+              //   <Button
+              //     handleClick={() => addToCart(product)}
+              //     disabled={product.disabled}
+              //   >
+              //     {product.disabled ? (
+              //       <>
+              //         {checkedIcon}
+              //         Item added
+              //       </>
+              //     ) : (
+              //       `ADD TO CART`
+              //     )}
+              //   </Button>
+              // </Card>
+              <ItemCard
                 key={product.id}
                 id={product.id}
                 title={product.title}
@@ -28,26 +51,12 @@ function ProductsList({
                 price={product.price}
                 image={product.image}
                 removeProduct={() => removeProduct(product.id)}
-              >
-                <Button
-                  handleClick={() => addToCart(index)}
-                  disabled={product.disabled}
-                >
-                  {product.disabled ? (
-                    <>
-                      {checkedIcon}
-                      Item added
-                    </>
-                  ) : (
-                    `ADD TO CART`
-                  )}
-                </Button>
-              </Card>
+              />
             );
           })
         )}
       </div>
-      {!loading && (
+      {!isLoading && (
         <div className={loadMoreWrapper}>
           <Button
             handleClick={loadMore}

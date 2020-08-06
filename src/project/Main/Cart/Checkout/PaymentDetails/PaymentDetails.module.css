@@ -1,0 +1,125 @@
+.paymentDetailsContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 74px 45px 74px 45px;
+  width: 50%;
+  font-family: "Raleway", sans-serif;
+}
+
+.paymentDetailsContainer button {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  width: auto;
+  height: 27px;
+  background-color: white;
+  color: #dbdbdb;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+.paymentDetailsContainer button:hover {
+  color: #8b8787;
+  transition-duration: 450ms;
+  cursor: pointer;
+}
+.paymentDetailsContainer button small {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding-left: 10px;
+}
+
+.paymentDetailsContainer h1 {
+  color: #595959;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.formWrapper {
+  width: 410px;
+}
+.formWrapper div {
+  border-bottom: 1px solid #79bac1;
+  padding: 20px 0 0 0;
+  padding-bottom: 10px;
+}
+
+.formWrapper label {
+  padding-top: 5px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #79bac1;
+}
+
+.formWrapper .payButton {
+  width: 409px;
+  height: 60px;
+  color: white;
+  background-color: #79bac1;
+  border: none;
+  outline: none;
+  border-radius: 9px;
+  margin-top: 54px;
+}
+
+.formWrapper .payButton:hover {
+  background-color: #57a3ac;
+  color: white;
+  transition-duration: 350ms;
+}
+
+.formWrapper .payButton:active {
+  transform: scale(0.9);
+  transition-duration: 350ms;
+}
+
+.formWrapper .payButton span {
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 800;
+  margin: auto;
+}
+
+.formWrapper label input {
+  background-color: white;
+  font-family: "Raleway", sans-serif;
+  color: #79bac1;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #79bac1;
+  width: 100%;
+  padding-bottom: 10px;
+}
+.formWrapper label input::placeholder {
+  color: #dbdbdb;
+  font-weight: "500";
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+@media screen and (max-width: 1024px) {
+  .paymentDetailsContainer {
+    width: 100%;
+    height: 600px;
+    padding: 30px;
+  }
+}
+@media screen and (max-width: 520px) {
+  .paymentDetailsContainer {
+    padding: 15px;
+  }
+  .formWrapper {
+    width: 90%;
+  }
+  .formWrapper .payButton {
+    width: 100%;
+  }
+}

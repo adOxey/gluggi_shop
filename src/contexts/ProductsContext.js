@@ -9,9 +9,9 @@ export const ProductsProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [productsInCart, setProductsInCart] = useState([]);
   const [cartNumber, setCartNumber] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [searched, setSearched] = useState([]);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(8);
 
   const { removeFromFirestore } = useFirestore(PRODUCTS);
 
@@ -31,58 +31,49 @@ export const ProductsProvider = (props) => {
             localStorage.getItem("cartProduct")
           );
 
-          if (!localStorageItems) {
-            setProducts(products);
-          }
-
           if (localStorageItems) {
-            const unique = products.filter((product) => {
-              localStorageItems.find((item) => {
+            products.forEach((product) => {
+              localStorageItems.forEach((item) => {
                 if (item.id === product.id) {
                   product.disabled = true;
                 }
               });
-              return product;
             });
 
             setCartNumber(localStorageItems.length);
             setProductsInCart(localStorageItems);
-            setProducts(unique);
           }
-          setLoading(false);
+          setProducts(products);
+          setIsLoading(false);
         } else {
-          console.log("Collection empty or something went wrong");
+          console.log("Collection empty or something went wrong...");
         }
       });
-
+    console.log("ProductsContext - useEffect");
     return () => {
       unsubscribe();
     };
   }, [limit]);
 
-  // Increase number of products fetched from db
+  // Fetch more products from db
   const loadMoreProducts = () => {
-    setLimit((prevState) => prevState + 3);
+    setLimit((prevState) => prevState + 4);
   };
 
-  // Handle search of products with a help of debounce function
+  // Search products using debounce function
   const handleSearch = debounce(function (searchedValue) {
-    setLoading(true);
+    setIsLoading(true);
     setSearched([...searchedValue]);
     setTimeout(() => {
-      setLoading(false);
+      setIsLoading(false);
     }, 400);
   }, 400);
 
-  // Add product to Product cart
-  const addToCart = (index) => {
-    const copiedProducts = [...products];
-    const clickedProduct = copiedProducts[index];
+  // Add product to cart
+  const addToCart = (product) => {
+    product.disabled = true;
 
-    copiedProducts[index].disabled = true;
-    const unfilteredCart = [...productsInCart, clickedProduct].map(
-      JSON.stringify
-    );
+    const unfilteredCart = [...productsInCart, product].map(JSON.stringify);
     const removedDuplicates = new Set(unfilteredCart);
     const updatedCart = Array.from(removedDuplicates).map(JSON.parse);
 
@@ -92,7 +83,7 @@ export const ProductsProvider = (props) => {
     localStorage.setItem("cartProduct", JSON.stringify(updatedCart));
   };
 
-  // Remove product from  Product cart
+  // Remove product from cart
   const removeFromCart = (id) => {
     const copiedCartState = [...productsInCart];
     const productIndex = copiedCartState.findIndex(
@@ -116,7 +107,7 @@ export const ProductsProvider = (props) => {
     removeItem.length === 0 && localStorage.removeItem("cartProduct");
   };
 
-  // Increase quantity of a product in Product cart
+  // Increase quantity in cart
   const increaseQuantity = (index) => {
     const copiedCartState = [...productsInCart];
     copiedCartState[index].quantity++;
@@ -124,7 +115,7 @@ export const ProductsProvider = (props) => {
     localStorage.setItem("cartProduct", JSON.stringify(copiedCartState));
   };
 
-  // Decrease quantity of a product in Product cart
+  // Decrease quantity in cart
   const decreaseQuantity = (index) => {
     const copiedCartState = [...productsInCart];
     if (copiedCartState[index].quantity > 1) {
@@ -139,7 +130,7 @@ export const ProductsProvider = (props) => {
     return setCartNumber(inCartLength);
   };
 
-  // Remove product from database
+  // Remove product from product list & db
   const removeProduct = (id) => {
     const stateCopy = [...products];
     const productIndex = stateCopy.findIndex((product) => product.id === id);
@@ -153,7 +144,7 @@ export const ProductsProvider = (props) => {
     products,
     productsInCart,
     cartNumber,
-    loading,
+    isLoading,
     addToCart,
     removeFromCart,
     increaseQuantity,

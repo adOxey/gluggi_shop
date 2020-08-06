@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { ProductsContext } from "../../../contexts/ProductsContext";
-import CartProducts from "./CartProducts/CartProducts";
 import classes from "./Cart.module.css";
 import Checkout from "./Checkout/Checkout";
+import CartItems from "./CartItems/CartItems";
 
 const Cart = () => {
   const values = useContext(ProductsContext);
@@ -20,20 +20,21 @@ const Cart = () => {
   if (productsInCart.length === 0) {
     return (
       <div className={classes.noItems}>
-        <p>There is no products in your cart.</p>
+        <p>Your shopping cart is empty.</p>
       </div>
     );
   }
 
   return (
     <>
+      <h1 className={classes.Title}>Shopping Cart</h1>
       {productsInCart.map((product, index) => (
-        <CartProducts
+        <CartItems
+          key={product.id}
           title={product.title}
           description={product.description}
           price={product.price}
           image={product.image}
-          key={product.id}
           id={product.id}
           removeFromCart={() => removeFromCart(product.id)}
           increaseQuantity={() => increaseQuantity(index)}

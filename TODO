@@ -6,21 +6,22 @@ Big issues:
   ✔ Local Storage doesn`t remember quantity. @done(20-07-07 22:37)
       When user change quantity of product in cart and then refresh page, product is still there but quantity is reseted to 1.
   ✔ Implement "Delete" function for products. @done(20-06-09 19:36)
-  ☐ Implement "Edit" function for products.
+  ✔ Implement "Edit" function for products. @done(20-07-23 17:00)
   ✔ Enable Firebase Storage and implement Image upload in Add Product form. @done(20-06-14 13:50)
   ✔ Enable realtime datebase. When products is added i want to have that product rendered on page without need to refresh products page which is case now. @done(20-07-07 22:42)
   ✔ Implement fully functional Search component @done(20-06-12 16:15)
-  ☐ Search queries needs debounde function to be optimal. Now is clunky.
+  ✔ Search queries needs debounce function to be optimal. Now is clunky. @done(20-07-14 23:14)
   ✔ Implement fully functional Reviews @done(20-07-06 23:42)
-  ☐ Need to do integration od Stripe package to Checkout component.
+  ☐ Need to do integrate Stripe.
   ✔ Split users and admins via Firebase Admin SDK and grant them diferent set of rights. @done(20-07-06 21:39)
       I will probably need to use Firebase functions or some kinda of server for Firebase Admin SDK. 
       I should never be in the front end part of app.
   ✔ Make Modal UI component responsive on mobile devices. @done(20-07-01 19:54)
-   ☐ Add sceleton UI or spinner for featured reviews component.
-   ✔ Add small spinner to image upload button (in addProduct component) which will show status of upload. @done(20-07-12 01:25)
-   ✔ Create pagination or infinite scrolling or infinite loading on click for products page. @done(20-07-12 20:10)
+  ✔ Add sceleton UI or spinner for featured reviews component. @done(20-07-14 21:05)
+  ✔ Add small spinner to image upload button (in addProduct component) which will show status of upload. @done(20-07-12 01:25)
+  ✔ Create pagination or infinite scrolling or infinite loading on click for products page. @done(20-07-12 20:10)
+  ☐ There is bug when changing quantity in cart. 
 
-
+   
 
 

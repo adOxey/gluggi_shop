@@ -10,7 +10,7 @@
   border: 1px solid rgb(230, 230, 230);
   border-radius: 6px;
 }
-.AddProduct {
+.AdminLink {
   height: 60px;
   width: 30%;
   border: 2px solid rgb(230, 230, 230);
@@ -18,7 +18,7 @@
   margin: 0 auto 25px auto;
 }
 
-.AddProduct a {
+.AdminLink a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +30,7 @@
   color: #292929;
 }
 
-.AddProduct:hover {
+.AdminLink:hover {
   border-color: #33a1ad;
   transition-duration: 600ms;
 }

@@ -1,35 +1,49 @@
-.container {
+.CheckoutContainer {
   display: flex;
   justify-content: flex-end;
-  width: 70vw;
-  margin: auto;
-  padding: 10px;
-}
-.sum {
-  font-family: "Bentham", sans-serif;
-  font-size: 2em;
-  font-weight: bold;
+  width: 820px;
+  margin: 15px auto;
 }
 
-.button_cont {
-  margin-right: 20px;
+.CheckoutWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 430px;
+  height: 65px;
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 9px;
+}
+
+.Totals {
+  font-size: 18px;
+  font-weight: 500;
+  color: #595959;
+}
+
+.sum {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #595959;
+  margin-left: 20px;
 }
 
 .btnCheckout {
-  font-family: "Work Sans", "Open Sans", sans-serif;
-  border-radius: 4px;
   background: #f7697b !important;
-  border: none;
   color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  width: 150px;
+  height: 40px;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   text-align: center;
   text-transform: uppercase;
-  font-size: 18px;
-  padding: 10px;
-  width: 200px;
-  height: 50px;
   transition: all 0.4s;
   cursor: pointer;
-  margin: 5px 15px 5px 5px;
   outline: none;
 }
 .btnCheckout span {
@@ -54,19 +68,20 @@
   right: 0;
 }
 
-.wrapper {
-  display: grid;
-}
-@media only screen and (max-width: 590px) {
-  .container {
-    justify-content: center;
-    width: 85vw;
+@media only screen and (max-width: 850px) {
+  .CheckoutContainer {
+    justify-content: flex-end;
+    width: 90vw;
     margin-top: 15px;
   }
+}
+
+@media screen and (max-width: 420px) {
   .sum {
-    font-size: 1.5em;
+    font-size: 20px;
+    margin-left: 5px;
   }
-  .btnCheckout {
-    width: 140px;
+  .Totals {
+    font-size: 16px;
   }
 }

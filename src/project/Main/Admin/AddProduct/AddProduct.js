@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
 import classes from "./AddProduct.module.css";
-import useForm from "../../../shared/hooks/useForm";
+import useForm from "../../../../shared/hooks/useForm";
 import validation from "./validation";
-import { PRODUCTS } from "../../../firebase/firebase";
-import useFirestore from "../../../shared/hooks/useFirestore";
-import { formReducer } from "../../../reducers/formReducer";
-import { Button, Form, FormInput } from "../../../shared/components";
+import { PRODUCTS } from "../../../../firebase/firebase";
+import useFirestore from "../../../../shared/hooks/useFirestore";
+import { formReducer } from "../../../../reducers/formReducer";
+import {
+  Button,
+  Form,
+  FormInput,
+  FormTextarea,
+} from "../../../../shared/components";
+
+const { container, pageBody } = classes;
 
 const AddProduct = () => {
-  const { container, pageBody } = classes;
-
   const initialState = {
     productName: "",
     shortDets: "",
@@ -48,7 +53,7 @@ const AddProduct = () => {
     if (values.completed) {
       addToFirestore(values);
     }
-    console.log("UseEffect rerendered");
+    console.log("UseEffect rendered");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.completed]);
 
@@ -64,7 +69,7 @@ const AddProduct = () => {
           {status.message}
         </h1>
       ) : (
-        <h1>Add New Product</h1>
+        <h1>Add new product</h1>
       )}
       <div className={container}>
         <Form onSubmit={handleSubmit}>
@@ -78,7 +83,7 @@ const AddProduct = () => {
             error={values.errors.productName}
             isTouched={values.isTouched.productName}
           />
-          <FormInput
+          <FormTextarea
             label="Short details:"
             type="text"
             name="shortDets"
@@ -88,7 +93,7 @@ const AddProduct = () => {
             error={values.errors.shortDets}
             isTouched={values.isTouched.shortDets}
           />
-          <FormInput
+          <FormTextarea
             label="Full description:"
             type="text"
             name="fullDesc"

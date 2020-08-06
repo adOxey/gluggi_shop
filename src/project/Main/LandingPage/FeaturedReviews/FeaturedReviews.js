@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { ReviewBox, Button, Spinner } from "../../../../shared/components";
 import { showCorrectTimestamp } from "../../../../shared/utils/compareTimestamps";
 
-function FeaturedReviews({ reviews, isLoading }) {
+function FeaturedReviews({ reviews, isLoading, fetchMoreReviews }) {
   const { Container, TitleWrapper, ReviewsWrapper } = classes;
 
-  const setFeaturedReviews = () => {
+  const setFeaturedReviews = (reviews) => {
     const reviewsCopy = [...reviews];
     const filterReviews = reviewsCopy.filter((review) => {
-      if (review.grade >= 4) {
+      if (review.grade >= 3) {
         return review;
       }
       return null;
@@ -19,7 +19,7 @@ function FeaturedReviews({ reviews, isLoading }) {
     return filterReviews;
   };
 
-  const featuredReviews = setFeaturedReviews();
+  const featuredReviews = setFeaturedReviews(reviews);
 
   return (
     <div className={Container}>
@@ -53,7 +53,9 @@ function FeaturedReviews({ reviews, isLoading }) {
         )}
       </div>
       <Link to="/reviews">
-        <Button variant="transparent">SEE ALL REVIEWS</Button>
+        <Button variant="transparent" handleClick={fetchMoreReviews}>
+          SEE ALL REVIEWS
+        </Button>
       </Link>
     </div>
   );
